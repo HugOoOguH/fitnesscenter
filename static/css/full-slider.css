@@ -34,3 +34,32 @@ body {
 footer {
     margin: 50px 0;
 }
+.btn-registrar {
+  -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border-radius: 10px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 10px;
+  background: #38c215;
+  padding: 10px 20px 10px 20px;
+  border: solid #1dcf29 2px;
+  text-decoration: none;
+}
+
+.btn-registrar:hover {
+  background: #00b023;
+  text-decoration: none;
+}
+
+.letras{
+  font-family: 'FuturaBook', Arial, sans-serif;
+  color: #38c215;
+  font-size: 15pt;
+  margin-top: 15px;
+}
+
+.letras:hover{
+ color: #38c215;
+ text-decoration: underline;   
+}
