@@ -1,0 +1,74 @@
+nav.navbar {
+    background-color:transparent;
+    padding-top: 30px;
+    border-style: hidden;
+  
+}
+nav.navbar.visibles{
+    background-color:seagreen;
+}
+
+a.navbar-brande{
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    line-height: 20px;
+    font-size: 300%;
+    font-family: 'Sarpanch',serif;
+    color:white;
+}
+.navbar-brande:hover{
+  text-decoration: none;
+  color:lawngreen;
+}
+div.navbar-collapse.collapse.navbar-right ul li a{
+     font-size: 130%;
+     font-family: 'Sarpanch',sans-serif;
+     color:white;
+ }
+
+div.navbar-collapse.collapse.navbar-right ul li a:hover{   
+     color:lawngreen;
+ }
+
+
+.animated.r:hover{
+    animation:rubberBand;
+    -webkit-animation-duration: 3s;
+}
+.animated:hover{
+    color:lawngreen;
+}
+
+
+#footer{
+      background-color:seagreen;
+      font-family: 'Sarpanch',sans-serif;
+      color: white;
+}
+h3.footertext{
+    text-align: center;
+}
+h4.footertext{
+    text-align: center;
+}
+div.footer1{
+    background-color: mediumseagreen;
+}
+p.footertext{
+    text-decoration: none;
+    color: white;
+}
+a.footertext{
+    text-decoration: none;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
