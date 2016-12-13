@@ -95,3 +95,8 @@ ENV/
 #Ignorar base de datos
 
 db.sqlite3
+
+#ignorar pychache
+
+*.pyc
+
