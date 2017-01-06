@@ -1,0 +1,111 @@
+/*Nav bar estatica y con color*/
+nav.navbar {
+    background-color:seagreen;
+    padding-top: 15px;
+    border-style:none;
+  
+}
+
+
+a.navbar-brande{
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    line-height: 20px;
+    font-size: 300%;
+    font-family: 'Sarpanch',serif;
+    color:white;
+}
+.navbar-brande:hover{
+  text-decoration: none;
+  color:lawngreen;
+}
+div.navbar-collapse.collapse.navbar-right ul li a{
+     font-size: 130%;
+     font-family: 'Sarpanch',sans-serif;
+     color:white;
+ }
+
+div.navbar-collapse.collapse.navbar-right ul li a:hover{   
+     color:lawngreen;
+ }
+
+
+.animated.r:hover{
+    animation:rubberBand;
+    -webkit-animation-duration: 3s;
+}
+.animated:hover{
+    color:lawngreen;
+}
+/* final de estilos de  nav bar estatica*/
+
+/*Content*/
+.prueba{
+    padding-top: 50px;
+}
+
+.letter_sis{
+    font-family: 'Sarpanch',sans-serif;
+    color: green;
+}
+
+.btn_iniciar{
+     font-size: 100%;
+     font-family:'Sarpanch',sans-serif;
+     color:green;
+     border: 3px solid limegreen;
+     border-radius: 12px;
+     padding: 10px 10px;
+}
+
+.pie_img{
+    font-family:'Sarpanch',sans-serif;
+    color:green;
+}
+
+/*****************************************/
+
+
+/*******Footer********/
+.footer_down{
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    background-color:seagreen;
+    border-color: white;
+    bottom: 0;
+    margin-bottom: 0;
+    border-width: 1px 0 0;
+    font-family: 'Sarpanch',sans-serif;
+    color: white;
+    padding-top: 20px;
+}
+#footer{
+      background-color:seagreen;      
+}   
+h3.footertext{
+    text-align: center;
+}
+h4.footertext{
+    text-align: center;
+}
+
+p.footertext{
+    text-decoration: none;
+    color: white;
+}
+a.footertext{
+    text-decoration: none;
+    color: white;
+}
+/*********************************************/
+
+
+
+
+
+
+
+

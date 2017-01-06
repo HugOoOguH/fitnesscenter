@@ -6,3 +6,11 @@ class HomeView(View):
 		template_name = "home/home.html"
 		context = {}
 		return render(request, template_name, context)
+
+
+
+class MenuView(View):
+	def get(self,request):
+		template_name = "menu_admin/menu.html"
+		context = {}
+		return render(request,template_name, context)
