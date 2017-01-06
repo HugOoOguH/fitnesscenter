@@ -2,15 +2,17 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
+from datetime import datetime
 import uuid
+
 # Create your models here.
 class Client(models.Model):
-	user_client = models.OneToOneField(settings.AUTH_USER_MODEL)
+	user_client = models.OneToOneField(settings.AUTH_USER_MODEL, blank=True, null=True)
 	unique_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 	address = models.CharField(max_length=200)
-	birth_date = models.DateField(auto_now=True)
+	birth_date = models.DateField(default=datetime.now, blank=True)
 	age = models.IntegerField()
-	start_date = models.DateField(auto_now=True)
+	start_date = models.DateField(default=datetime.now, blank=True)
 	observations = models.TextField()
 	phone_num = models.CharField(max_length=30)
 	photo = models.ImageField(upload_to="clients", blank=True, null=True)

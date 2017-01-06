@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
-from .forms import UserRegistrationForm, AdminForm
+from .forms import UserRegistrationForm, UserRegistrationClientForm, AdminForm, ClientForm
 from django.contrib.auth.models import User
 from django.utils.decorators  import method_decorator
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -41,9 +41,40 @@ class RegistryView(View):
 			}
 			return render (request, template_name, context)
 
-# def class RegistryClient(View):
-# 	template_name = "registration/registry_client.html"
-# 	form 
+class RegistryClient(View):
+	def get(self, request):
+		template_name = "registration/registry_client.html"
+		form = ClientForm()
+		form_usc = UserRegistrationClientForm()
+		context = {
+			'form':form,
+			'form_usc':form_usc,
+		}
+		return render(request, template_name, context)
+
+	def post(self, request):
+		template_name = "registration/registry_client.html"
+		new_user_c = UserRegistrationClientForm(request.POST)
+		new_client_c = ClientForm(request.POST, request.FILES)
+		#  
+		if new_user_c.is_valid() and new_client_c.is_valid():
+			new_client = new_client_c.save(commit=False)
+			new_user = new_user_c.save(commit=False)
+			new_client.save()
+			new_user.username = new_client.unique_id
+			new_user.set_password(new_client.unique_id)
+			new_user.save()
+			new_client.user_client = new_user
+			new_client.save()
+			return redirect('home')
+		else:
+			context = {
+				'form_usc': new_user_c,
+				'form': new_client_c,
+			}
+			return render(request, template_name, context)
+
+
 
 class ProfileView(View):
 	pass

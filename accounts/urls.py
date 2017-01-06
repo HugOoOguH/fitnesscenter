@@ -5,6 +5,7 @@ from . import views
 urlpatterns = [
 	url(r'^profile/$', views.ProfileView.as_view(), name='profile'),
 	url(r'^registry/$', views.RegistryView.as_view(), name='registry'),
+	url(r'^registry_client/$', views.RegistryClient.as_view(), name='regclient'),
 	url(r'^login/$', login, name='login'),
 	url(r'^logout/$', logout,{'next_page': '/'}, name="logout"),
 ]
