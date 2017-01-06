@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block content%}
+
+	{% if form.erros %}
+		<h2>Tu usuario y contraseña no concuerdan, por favor intentalo nuevamente.</h2>
+	{% else %}
+		<h2>Ingresa con tu nombre de usuario y contraseña</h2>
+	{% endif %}
+
+	<form action="{%url 'accounts:login'%}" method="post">
+		{%csrf_token%}
+		{{form.as_p}}
+		<input type="hidden" name="next" value="{{next}}">
+		<input type="submit" name="submit" value="Iniciar Sesión">
+	</form>	
+{%endblock content%}

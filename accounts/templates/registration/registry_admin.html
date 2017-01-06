@@ -6,6 +6,7 @@
 	<form method="post" action=".">
 		{%csrf_token%}
 		{{form.as_p}}
+		{{form_adm.as_p}}
 		<input type="submit" name="registroAdm">
 	</form>
 {%endblock content%}

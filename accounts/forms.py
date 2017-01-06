@@ -1,5 +1,6 @@
 from django import forms 
 from django.contrib.auth.models import User
+from .models import Administrator
 
 class UserRegistrationForm(forms.ModelForm):
 	password = forms.CharField(label="Contraseña", widget=forms.PasswordInput)
@@ -14,8 +15,14 @@ class UserRegistrationForm(forms.ModelForm):
 
 	def clean_password2(self):
 		clean = self.cleaned_data
-		if clean['password']!=clean['password2']:
+		if clean['password']!= clean['password2']:
 			raise forms.ValidationError("Las contraseñas no coinciden")
 		return clean['password2']
 
+class AdminForm(forms.ModelForm):
+	class Meta:
+		model = Administrator
+		fields = (
+			'administrator_root',
+			) 
 

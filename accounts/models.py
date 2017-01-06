@@ -2,10 +2,11 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
-
+import uuid
 # Create your models here.
 class Client(models.Model):
 	user_client = models.OneToOneField(settings.AUTH_USER_MODEL)
+	unique_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 	address = models.CharField(max_length=200)
 	birth_date = models.DateField(auto_now=True)
 	age = models.IntegerField()

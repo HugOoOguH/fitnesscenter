@@ -1,0 +1,10 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{% block content %}
+	<h2>Tu sesión se ha cerrado con exito</h2>
+	<h2>Iniciar sesión nuevamente: </h2>
+	<a href="{%url 'accounts:login'%}">
+		<button>Entrar</button>
+	</a>
+{% endblock content %}
