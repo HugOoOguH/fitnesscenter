@@ -37,9 +37,9 @@
 					<ul class="nav navbar-nav">
 						{%if request.user.is_authenticated%}
 						<li><a href="#prueba">Menú</a></li>
-						<li><a href="#">Cerrar  Sesión</a></li>
+						<li><a href="{% url "accounts:logout" %}">Cerrar  Sesión</a></li>
 						{%else%}
-						<li><a href="#">Iniciar Sesión</a></li>
+						<li><a href="{% url "accounts:login" %}">Iniciar Sesión</a></li>
 						{%endif%}
 					</ul>
 					

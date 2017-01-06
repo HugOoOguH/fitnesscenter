@@ -3,8 +3,11 @@ from django.contrib.auth.models import User
 from .models import Administrator, Client
 
 class UserRegistrationForm(forms.ModelForm):
-	password = forms.CharField(label="Contraseña", widget=forms.PasswordInput)
-	password2 = forms.CharField(label="Repite tu Contraseña", widget=forms.PasswordInput)
+	username = forms.CharField(label="",widget=forms.TextInput(attrs={'class' : 'form_login', 'placeholder':"Nombre usuario"	}))
+	email = forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form_login', 'placeholder':"Correo electronico"}))
+	password = forms.CharField(label="",widget=forms.PasswordInput(attrs={'placeholder':'contraseña'}))
+	password2 = forms.CharField(label="",widget=forms.PasswordInput(attrs={'placeholder':'Repite contraseña'}))
+
 
 	class Meta:
 		model = User;
@@ -12,6 +15,7 @@ class UserRegistrationForm(forms.ModelForm):
 		help_texts = {
 			'username' : None,
 		}
+
 
 	def clean_password2(self):
 		clean = self.cleaned_dhata
@@ -56,3 +60,4 @@ class ClientForm(forms.ModelForm):
 			'photo',
 			'blood_type',
 			)
+
