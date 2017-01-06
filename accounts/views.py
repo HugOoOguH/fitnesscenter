@@ -3,11 +3,13 @@ from django.views.generic import View
 from .forms import UserRegistrationForm
 from django.contrib.auth.models import User
 from django.utils.decorators  import method_decorator
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from .models import Administrator
 
 class RegistryView(View):
-	@method_decorator(login_required)
+	# @method_decorator(login_required)
+	# @staff_member_required
+	# @method_decorator(staff_member_required)
 	def get(self, request):
 		template_name = "registration/registry_admin.html";	
 		form = UserRegistrationForm()
