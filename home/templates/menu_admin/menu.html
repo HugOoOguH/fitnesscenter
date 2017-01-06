@@ -1,0 +1,81 @@
+{%extends 'base_sis.html' %} 
+{%load static%}
+
+
+{%block head%}
+{%endblock head%}
+
+
+{% block content%}
+<div  class="container prueba" style="text-align: center">
+		{%if request.user.is_authenticated%}
+		<div class="row" style="padding:50px;">
+			<h1 class="letter_sis">Bienvenido: HUGO </h1>
+			<div class="col-sm-4 col-md-4">
+				<img id="redondo" class="img-rounded" src='{% static "img/account.png" %}'  width="100" height="100">
+				<div class="pieImagen">
+					<span class="pie_img">Clientes</span>
+				</div>
+			</div>
+
+			<div class="col-sm-4 col-md-4">
+				<a href="{%url 'shop_product:product_list'%}">
+				<img id="redondo" class="img-rounded" src='{% static "img/buffer.png" %}'  width="100" height="100">
+				<div class="pieImagen">
+					<span class="pie_img">Inventario de Productos</span>
+				</div>
+				</a>
+			</div>
+
+			<div class="col-sm-4 col-md-4">
+				<img id="redondo" class="img-rounded" src='{% static "img/ventas.png" %}'  width="100" height="100">
+				<div class="pieImagen">
+					<span class="pie_img">Ventas</span>
+				</div>
+			</div>
+		 </div>
+		 
+		 	<div class="row" style="padding:50px;">
+			<div class="col-sm-4 col-md-4">
+				<img id="redondo" class="img-rounded" src='{% static "img/visit.png" %}'  width="100" height="100">
+				<div class="pieImagen">
+					<a href="#"><span class="pie_img">Visitas</span></a>
+				</div>
+			</div>
+
+			<div class="col-sm-4 col-md-4">
+				<a href="{%url 'shop_product:product_list'%}">
+				<img id="redondo" class="img-rounded" src='{% static "img/bookmark.png" %}'  width="100" height="100">
+				<div class="pieImagen">
+					<span class="pie_img">Clases</span>
+				</div>
+				</a>
+			</div>
+
+			<div class="col-sm-4 col-md-4">
+				<img id="redondo" class="img-rounded" src='{% static "img/chart-line.png" %}'  width="100" height="100">
+				<div class="pieImagen">
+					<span class="pie_img">Reportes</span>
+				</div>
+			</div>
+		 </div>
+		 {%else%}
+		 <div class="row" style="padding:70px;">	
+			 <div class="col-sm-12 col-md-12">
+				 <h1 class="letter_sis"> B I E N V E N I D O</h1>
+				<img id="redondo" class="img-rounded" src='{% static "img/worker.png" %}'  width="150" height="150">
+				<div class="center">
+					<a href="#"><span class="btn_iniciar">Iniciar Sesión</span></a>
+				</div>
+			</div>
+		</div>		
+		{%endif%}
+</div>
+
+
+{%endblock content%}
+
+
+
+{%block scripts%}
+{%endblock scripts%}
