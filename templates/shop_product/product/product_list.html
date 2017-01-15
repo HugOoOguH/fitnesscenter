@@ -6,13 +6,13 @@
  {% if category %}
     {{ category.name}}
   {% else%}
-    Products
+    Fitness Products
  {%endif%}
 {%endblock%}
 
 {% block content%}
     <div id="sidebar">
-        <h3>Categories</h3>
+        <h3>Categorias</h3>
         <ul>
             <li {% if not category %}class="selected"{% endif %}>
                 <a href="{% url "shop_product:product_list" %}">All</a>

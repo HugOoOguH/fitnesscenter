@@ -10,13 +10,15 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include(urlsAccounts, namespace='accounts')),
+    url(r'^shop/', include('shop_product.urls',namespace='shop_product')),
+    url(r'^cart/', include ('cart.urls', namespace='cart')),
     url(r'^', include(urlsHome)),
     url('', include('social.apps.django_app.urls', namespace='social')),
     url(
     	regex=r'^media/(?P<path>.*)$',
     	view=serve,
     	kwargs={'document_root':settings.MEDIA_ROOT}),
-    url(r'^shop/', include('shop_product.urls',namespace='shop_product')),
+    
 ]
 
 if settings.DEBUG:

@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'class',
     'visits',
     'home',
+    'cart',
 
 ]
 
@@ -142,6 +143,7 @@ SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
     'fields' : 'id, name, email, age_range',
 }
 
+CART_SESSION_ID = 'cart'
 # SOCIAL_AUTH_PIPELINE = { 
 #     'social.pipeline.social_auth.social_details',
 #     'social.pipeline.social_auth.social_uid',
