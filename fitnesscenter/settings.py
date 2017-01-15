@@ -62,6 +62,8 @@ TEMPLATES = [
                 #  #Python social Auth Context Processors
                 'social.apps.django_app.context_processors.backends',
                 'social.apps.django_app.context_processors.login_redirect',
+                ##Context Processors of cart
+                'cart.context_processors.cart',
             ],
         },
     },
