@@ -14,7 +14,7 @@ class UserRegistrationForm(forms.ModelForm):
 		}
 
 	def clean_password2(self):
-		clean = self.cleaned_dhata
+		clean = self.cleaned_data
 		if clean['password']!= clean['password2']:
 			raise forms.ValidationError("Las contraseñas no coinciden")
 		return clean['password2']
