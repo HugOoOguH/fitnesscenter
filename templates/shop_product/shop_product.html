@@ -8,12 +8,31 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>{% block title%} Products {%endblock%} </title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Sarpanch:400,800" rel="stylesheet">
+		<!--Import Google Icon Font-->
+		<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<!-- Bootstrap Core CSS -->
+		<link href="{%static 'css/bootstrap.min.css'%}" rel="stylesheet">
         <link rel="stylesheet" href="{% static "css/base_shop.css"%}">
+        <link href="{%static 'css/base_sis.css'%}" rel="stylesheet">
 
     </head>
     <body>
         <div id = "header">
-            <a href="/" class="logo">Productos</a>
+            <a href="{% url "shop_product:product_list"%}" class="logo">Productos</a>
+            <div id="navbar" class="navbar-collapse collapse navbar-right" aria-expanded="false" style="height: 1px;">
+					<ul class="nav navbar-nav">
+						{%if request.user.is_authenticated%}
+						<li><a href="{% url "accounts:login" %}">Menú</a></li>
+                        <li><a href="#prueba">Inventario</a></li>
+                        <li><a href="#prueba">Clientes</a></li>
+                        <li><a href="#prueba">Reportes</a></li>
+						<li><a href="{% url "accounts:logout" %}">Cerrar  Sesión</a></li>
+						{%else%}
+						<li><a href="{% url "accounts:login" %}">Iniciar Sesión</a></li>
+						{%endif%}
+					</ul>
+					</div><!--/.nav-collapse -->
         </div>
         <div id="subheader">
             <div class="cart">
