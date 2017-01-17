@@ -10,6 +10,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include(urlsAccounts, namespace='accounts')),
+    url(r'^orders/', include('orders.urls', namespace='orders')),
     url(r'^shop/', include('shop_product.urls',namespace='shop_product')),
     url(r'^cart/', include ('cart.urls', namespace='cart')),
     url(r'^', include(urlsHome)),
