@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{%load static%}
+
+{% block content %}
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<h1>Bienvenido a tu perfil Administrador {{request.user.first_name}}</h1>
+
+	<img src="{{adm.photo.url}}"  height="80" alt="photo_admin">
+	<p>
+	<a href="{% url 'accounts:list-client'%}">
+		<button>Gestionar Clientes</button>
+	</a>	
+	</p>
+	<p>
+		Aqui va la información correspondiente al administrador.
+	</p>
+	<section style="padding-top: 50%;">
+		
+	</section>
+{% endblock content %}

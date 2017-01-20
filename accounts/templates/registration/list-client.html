@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block content%}
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<h1>Lista de clientes</h1>
+		{%for client in clients%}
+			hola hola
+			<h2>
+				{{client.user_client.first_name}}
+			</h2>
+			<h2>
+				{{client.user_client.last_name}}
+			</h2>
+			<h3>
+				{{client.user_client.email}}
+			</h3>
+				{{client.star_date}}
+				{{client.observations}}
+			<br>
+			<br>
+			<br>
+			<br>
+		{%endfor%}
+			<section style="padding-top: 50%;">
+		
+	</section>
+
+{%endblock content%}
