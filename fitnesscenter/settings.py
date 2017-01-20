@@ -32,6 +32,8 @@ INSTALLED_APPS = [
     'class',
     'visits',
     'home',
+    'cart',
+    'orders',
 
 ]
 
@@ -61,6 +63,8 @@ TEMPLATES = [
                 #  #Python social Auth Context Processors
                 'social.apps.django_app.context_processors.backends',
                 'social.apps.django_app.context_processors.login_redirect',
+                ##Context Processors of cart
+                'cart.context_processors.cart',
             ],
         },
     },
@@ -142,6 +146,7 @@ SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
     'fields' : 'id, name, email, age_range',
 }
 
+CART_SESSION_ID = 'cart'
 # SOCIAL_AUTH_PIPELINE = { 
 #     'social.pipeline.social_auth.social_details',
 #     'social.pipeline.social_auth.social_uid',
