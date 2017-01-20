@@ -8,4 +8,5 @@ urlpatterns = [
 	url(r'^registry_client/$', views.RegistryClient.as_view(), name='regclient'),
 	url(r'^login/$', login, name='login'),
 	url(r'^logout/$', logout,{'next_page': '/'}, name="logout"),
+	url(r'^list-client/$', views.ListClients.as_view(), name="list-client"),
 ]
