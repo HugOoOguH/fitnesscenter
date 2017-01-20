@@ -86,6 +86,8 @@ class ProfileView(View):
 		}
 		return render(request, template_name, context)
 
+
+
 class ListClients(View):
 	@method_decorator(login_required)
 	def get(self, request):
