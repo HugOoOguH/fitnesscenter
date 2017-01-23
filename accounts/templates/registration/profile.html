@@ -1,26 +1,51 @@
-{% extends 'base.html' %}
+{% extends 'base_sis.html' %}
 
 {%load static%}
 
 {% block content %}
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+	
+	<div style="padding-top: 150px">
 
-	<h1>Bienvenido a tu perfil Administrador {{request.user.first_name}}</h1>
+		<div class="page-header text-center">
+			<h1>Perfil</h1>
+		</div>
 
-	<img src="{{adm.photo.url}}"  height="80" alt="photo_admin">
-	<p>
-	<a href="{% url 'accounts:list-client'%}">
-		<button>Gestionar Clientes</button>
-	</a>	
-	</p>
-	<p>
-		Aqui va la información correspondiente al administrador.
-	</p>
-	<section style="padding-top: 50%;">
-		
-	</section>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-6 col-lg-6">
+					<div class="col-md-8 col-md-offset-2">
+						<img src="{{adm.photo.url}}" alt="photo_admin" class="img-responsive img-circle" style="width: 50%">
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-6 col-lg-6">
+					<h1 class="text-center"><span class="label label-success">Bienvenido A Tu Perfil</span></h1>
+					<p>
+						<div class="text-center">
+							<table class="table">
+								<tr class="success">
+									<td>
+										<h2>{{request.user.first_name}}</h2>
+										<h2>{{request.user.last_name}}</h2>
+										<h3>Correo: {{request.user.email}}</h3>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</p>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12 text-center">
+					<a href="{% url 'accounts:list-client'%}">
+						<button class="btn btn-primary">Gestionar Clientes</button>
+					</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	
 {% endblock content %}

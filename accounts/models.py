@@ -7,6 +7,11 @@ import uuid
 
 # Create your models here.
 class Client(models.Model):
+	STATUS_CLIENT = (
+		('PA', 'Pagado'),
+		('PE', 'Pendiente'),
+		('AT', 'Atrasado'), 
+		)
 	user_client = models.OneToOneField(settings.AUTH_USER_MODEL, blank=True, null=True)
 	unique_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 	address = models.CharField(max_length=200)
@@ -17,6 +22,7 @@ class Client(models.Model):
 	phone_num = models.CharField(max_length=30)
 	photo = models.ImageField(upload_to="clients", blank=True, null=True)
 	blood_type = models.CharField(max_length=50)
+	status = models.CharField(max_length=2, choices=STATUS_CLIENT, blank=True, null=True)
 
 	class Meta:
 		verbose_name = "Client"

@@ -1,33 +1,54 @@
-{%extends 'base.html'%}
+{%extends 'base_sis.html'%}
 {%load static%}
 
 {%block content%}
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<h1>Lista de clientes</h1>
-		{%for client in clients%}
-			hola hola
-			<h2>
-				{{client.user_client.first_name}}
-			</h2>
-			<h2>
-				{{client.user_client.last_name}}
-			</h2>
-			<h3>
-				{{client.user_client.email}}
-			</h3>
-				{{client.star_date}}
-				{{client.observations}}
-			<br>
-			<br>
-			<br>
-			<br>
-		{%endfor%}
-			<section style="padding-top: 50%;">
-		
-	</section>
+	<div style="padding-top: 150px;">
+		<div class="panel panel-success">
+			<div class="panel-body">
+				<ul class="list-group">
+					{% for client in clients %}
+						<a href="#" class="list-group-item">
+							<div class="container-fluid">
+								<div class="row">
+									
+									<div class="col-md-1">
+										<img src="{{client.photo.url}}" class="img-responsive img-circle" style="width: 80%;">
+									</div>
+
+									<div class="col-md-3">
+										{{client.user_client.first_name}}
+									</div>
+
+									<div class="col-md-3">
+										{{client.user_client.last_name}}
+									</div>
+
+									<div class="col-md-2">
+										{{client.user_client.email}}
+									</div>
+
+									<div class="col-md-2">
+										{{client.start_date}}
+									</div>
+
+									<div class="col-md-1">
+										{% if client.status == "PA" %}
+											<div class="alert alert-success" role="alert"></div>
+										{% else %}
+											{% if client.status == "PE" %}
+												<div class="alert alert-warning" role="alert"></div>
+											{% else %}
+												<div class="alert alert-danger" role="alert"></div>
+											{% endif %}
+										{% endif %}
+									</div>
+								</div><!-- div Row -->
+							</div><!-- div Container -->
+						</a><!-- a -->
+					{% endfor %}
+				</ul><!-- div list-group -->
+			</div><!-- div panel-body -->
+		</div>
+	</div>
 
 {%endblock content%}
