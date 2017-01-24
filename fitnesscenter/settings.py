@@ -29,7 +29,7 @@ INSTALLED_APPS = [
     'social.apps.django_app.default',
     'monthlypayments',
     'shop_product',
-    'class',
+    'courses',
     'visits',
     'home',
     'cart',

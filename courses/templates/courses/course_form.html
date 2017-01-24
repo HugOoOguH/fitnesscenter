@@ -1,0 +1,28 @@
+{% extends "base_sis.html" %}
+
+{% load static%}
+
+{%block head%}
+    <link href="{% static 'css/class.css'%}" rel="stylesheet">
+{%endblock head%}
+
+
+{% block content %}
+<div style="padding-top: 50px;"> 
+    <div class="text-center">      
+        <h1>Agregar</h1>
+    </div>
+
+     
+    <div style="text-align:center; padding-bottom: 5px;">
+            <form method="post">
+                {% csrf_token %}
+                <li id="id_name" class="contact">{{ course.name }}</li>
+                <li id="id_price" class="contact">{{ course.price }}</li>
+                <li id="id_start_date" class="contact">{{ course.start_date }}</li>   
+                <!--{{ form.as_p }}-->
+                <input type="submit" value="Submit" />
+            </form>
+    </div>
+</div>
+{%endblock content%}

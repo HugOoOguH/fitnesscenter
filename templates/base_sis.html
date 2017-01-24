@@ -40,7 +40,7 @@
 						<li><a href="#prueba">Pagos</a></li>
 						<li><a href="#prueba">Reportes</a></li>
 						<li><a href="#" class="user">{{request.user}}</a></li>
-						<li><a href="#"><img  src="{% if request.user.photo %}{{ user.photo.url }}{% else %}{% static "img/404.jpg" %}{% endif %}" class="img-circle photo_perfil"></a></li>
+						<li><a href="#"><img  src="{% if adm.photo %}{{ adm.photo.url }}{% else %}{% static "img/404.jpg" %}{% endif %}" class="img-circle photo_perfil"></a></li>
 						<li><a href="{% url "accounts:logout" %}">Cerrar  Sesión</a></li>
 						{%else%}
 						<li><a href="{% url "accounts:login" %}">Iniciar Sesión</a></li>
