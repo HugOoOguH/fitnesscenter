@@ -8,5 +8,7 @@ urlpatterns = [
 	url(r'^registry_client/$', views.RegistryClient.as_view(), name='regclient'),
 	url(r'^login/$', login, name='login'),
 	url(r'^logout/$', logout,{'next_page': '/'}, name="logout"),
-	url(r'^list-client/$', views.ListClients.as_view(), name="list-client"),
+	url(r'^list-client/(?P<vvalue>[-\w]+)/$', views.ListClients.as_view(), name="list-client"),
+	url(r'^detail-client/(?P<id_client>\d+)$', views.DetailClient.as_view(), name="detail-client"),
+	url(r'^menu/$', views.Menu.as_view(), name="menu"),
 ]

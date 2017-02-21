@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import View
 from .forms import UserRegistrationForm, UserRegistrationClientForm, AdminForm, ClientForm
 from django.contrib.auth.models import User
@@ -42,6 +42,7 @@ class RegistryView(View):
 			return render (request, template_name, context)
 
 class RegistryClient(View):
+	@method_decorator(login_required)
 	def get(self, request):
 		template_name = "registration/registry_client.html"
 		form = ClientForm()
@@ -54,19 +55,19 @@ class RegistryClient(View):
 
 	def post(self, request):
 		template_name = "registration/registry_client.html"
-		new_user_c = UserRegistrationClientForm(request.POST)
-		new_client_c = ClientForm(request.POST, request.FILES)
-		#  
+		new_client_c = ClientForm(request.POST,request.FILES)
+		new_user_c = UserRegistrationClientForm(request.POST) 
 		if new_user_c.is_valid() and new_client_c.is_valid():
 			new_client = new_client_c.save(commit=False)
 			new_user = new_user_c.save(commit=False)
 			new_client.save()
 			new_user.username = new_client.unique_id
+			new_user.email = "example@gmail.com"
 			new_user.set_password(new_client.unique_id)
 			new_user.save()
 			new_client.user_client = new_user
 			new_client.save()
-			return redirect('home')
+			return redirect('accounts:list-client')
 		else:
 			context = {
 				'form_usc': new_user_c,
@@ -86,14 +87,53 @@ class ProfileView(View):
 		}
 		return render(request, template_name, context)
 
-
-
 class ListClients(View):
 	@method_decorator(login_required)
-	def get(self, request):
+	def get(self, request, vvalue):
 		template_name = "registration/list-client.html"
-		clients = Client.objects.all()
+		if vvalue == 'void':
+			clients = Client.objects.all()
+
+		if vvalue == 'PA':
+			clients = Client.pagado.filter(status='PA')
+
+		if vvalue == 'PE':
+			clients = Client.pendiente.filter(status='PE')
+
+		if vvalue == 'AT':
+			clients = Client.atrasado.filter(status='AT')
+
+		# clients = Client.objects.all()
 		context = {
 		'clients' : clients,
 		}
+		return render(request, template_name, context)
+
+class DetailClient(View):
+	@method_decorator(login_required)
+	def get(self, request, id_client):
+		template_name = "registration/detail_client.html"
+		client = get_object_or_404(Client, user_client_id=id_client)
+		user_form = ClientForm(instance=client)
+		context = {
+		'client' : client,
+		'user_form' : user_form,
+		}
+		return render (request, template_name, context)
+
+	def post(self, request, id_client):
+		template_name = "registration/detail_client.html"
+		new_client_c = ClientForm(request.POST,request.FILES)
+		if new_client_c.is_valid():
+			new_client = new_client_c.save(commit=False)
+			new_client.save()
+			return redirect('accounts:detail-client', id_client='1')
+		else:
+			return redirect('accounts:detail-client', id_client='1')
+
+
+class Menu(View):
+	def get(self, request):
+		template_name = "registration/menu.html"
+		context = {}
 		return render(request, template_name, context)

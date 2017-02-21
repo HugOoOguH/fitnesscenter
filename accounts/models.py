@@ -5,6 +5,19 @@ from django.conf import settings
 from datetime import datetime
 import uuid
 
+class SuccessManager(models.Manager):
+	def get_queryset(self):
+		return super(SuccessManager, self).get_queryset().filter(status='PA')
+
+class WarningManager(models.Manager):
+	def get_queryset(self):
+		return super(WarningManager, self).get_queryset().filter(status='PE')
+
+class DangerManager(models.Manager):
+	def get_queryset(self):
+		return super(DangerManager, self).get_queryset().filter(status='AT')
+
+
 # Create your models here.
 class Client(models.Model):
 	STATUS_CLIENT = (
@@ -14,16 +27,19 @@ class Client(models.Model):
 		)
 	user_client = models.OneToOneField(settings.AUTH_USER_MODEL, blank=True, null=True)
 	unique_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-	address = models.CharField(max_length=200)
 	birth_date = models.DateField(default=datetime.now, blank=True)
 	age = models.IntegerField()
 	start_date = models.DateField(default=datetime.now, blank=True)
-	observations = models.TextField()
 	phone_num = models.CharField(max_length=30)
-	photo = models.ImageField(upload_to="clients", blank=True, null=True)
 	blood_type = models.CharField(max_length=50)
-	status = models.CharField(max_length=2, choices=STATUS_CLIENT, blank=True, null=True)
-
+	address = models.CharField(max_length=200)
+	observations = models.TextField()
+	photo = models.ImageField(upload_to="clients", blank=True, null=True)
+	status = models.CharField(max_length=2, choices=STATUS_CLIENT, default='PA', blank=True, null=True)
+	objects = models.Manager()
+	pagado = SuccessManager()
+	pendiente = WarningManager()
+	atrasado = DangerManager()
 	class Meta:
 		verbose_name = "Client"
 		verbose_name_plural = "Clients"

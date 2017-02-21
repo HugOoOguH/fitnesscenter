@@ -1,12 +1,14 @@
-{%extends 'base.html'%}
+{%extends 'base_sis.html'%}
 {%load static%}
 
 {% block content%}
+	<div style="padding-top: 50px;">
 	<h1>Registro de Clientes</h1>
-	<form action="." method="post">
+	<form action="." method="post" enctype='multipart/form-data'>
 		{%csrf_token%}
 		{{form.as_p}}
 		{{form_usc.as_p}}
 		<input type="submit" name="submitclient" value="Registrar Cliente">
 	</form>
+	</div>
 {% endblock content%}

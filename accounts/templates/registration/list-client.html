@@ -4,11 +4,41 @@
 
 {%block content%}
 	<div style="padding-top: 150px;">
+		<div class="text-center strong"><h1>Lista de Clientes</h1></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-6">
+					<ul class="list-unstyled list-inline">
+						<li>
+							<a href="{% url 'accounts:list-client' 'PA'%}">
+								<buttton class="btn btn-success">
+									Pagado
+								</buttton>
+							</a>
+						</li>
+						<li>
+							<a href="{% url 'accounts:list-client' 'PE'%}">
+								<buttton class="btn btn-warning">
+									Pendiente
+								</buttton>
+							</a>
+						</li>
+						<li>
+							<a href="{% url 'accounts:list-client' 'AT'%}">
+								<buttton class="btn btn-danger">
+									Atrasado
+								</buttton>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
 		<div class="panel panel-success">
 			<div class="panel-body">
 				<ul class="list-group">
 					{% for client in clients %}
-						<a href="#" class="list-group-item">
+						<a href="{% url 'accounts:detail-client' client.user_client_id %}" class="list-group-item">
 							<div class="container-fluid">
 								<div class="row">
 									

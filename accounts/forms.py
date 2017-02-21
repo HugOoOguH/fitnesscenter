@@ -48,16 +48,39 @@ class AdminForm(forms.ModelForm):
 			)
 
 class ClientForm(forms.ModelForm):
+	birth_date = forms.CharField(label="Fecha de Nacimiento", widget=forms.TextInput(attrs={'class':'form-control',
+		'type':'date',
+		'placeholder' : 'Fecha de Nacimiento'}))
+	age = forms.IntegerField(label="Edad", widget=forms.TextInput(attrs = {'class':'form-control',
+		'type' : 'number',
+		'placeholder' : 'Edad'}))
+	start_date = forms.CharField(label="Fecha de Inicio", widget=forms.TextInput(attrs={'class':'form-control',
+		'type':'date',
+		'placeholder' : 'Fecha de Inicio'}))
+	phone_num = forms.IntegerField(label="Número Telefónico", widget=forms.TextInput(attrs = {'class':'form-control',
+		'type' : 'text',
+		'placeholder' : 'Numero Telefonico'}))
+	blood_type = forms.CharField(label="Tipo de Sangre",widget=forms.TextInput(attrs = {'class' : 'form-control',
+		'type' : 'text',
+		'placeholder' : 'Tipo de sangre'}))
+	address = forms.CharField(label = "Dirección", widget=forms.Textarea(attrs={'class' : 'form-control',
+		'type': 'text',
+		'rows' : '3',
+		'placeholder' : 'Dirección'}))
+	observations = forms.CharField(label="Observaciones", widget=forms.Textarea(attrs={'class' : 'form-control',
+		'type' : 'text',
+		'rows' : '3',
+		'placeholder' : 'Observaciones'}))
 	class Meta:
 		model = Client
 		fields = (
-			'address',
 			'birth_date',
 			'age',
 			'start_date',
-			'observations',
 			'phone_num',
-			'photo',
 			'blood_type',
+			'address',
+			'observations',
+			'photo',
 			)
 
