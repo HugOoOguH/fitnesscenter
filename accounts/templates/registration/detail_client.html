@@ -1,0 +1,46 @@
+{% extends 'base_sis.html'%}
+{% load static%}
+
+{% block content %}
+	<div style="padding-top: 50px;">
+		<div class="text-center strong">
+			<h1 class="page-header">Detalle Cliente</h1>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-sm-6 col-xs12">
+					<div class="text-center">
+						<img src="{{client.photo.url}}" class="img-responsive avatar img-circle img-thumbnail" alt="avatar">
+						<h6>Cambiar foto de el cliente...</h6>
+						<input type="file" name="image" class="text-center center-block well well-sm">
+					</div>
+				</div>
+
+				<div class="col-md-8 col-sm-6 col-xs-12">
+					<h1>
+						{% if client.status == "PA" %}
+							<div class="alert alert-success text-center" role="alert">PAGADO</div>
+						{% else %}
+							{% if client.status == "PE" %}
+								<div class="alert alert-warning text-center" role="alert">PENDIENTE</div>
+							{% else %}
+								<div class="alert alert-danger text-center" role="alert">ATRASADO</div>
+							{% endif %}
+						{% endif %}
+					</h1>
+					<h3 class="strong text-center">Información sobre el cliente</h3>
+					<form role="form" action="." method="post" enctype='multipart/form-data'>
+						<div class="form-group">
+							{%csrf_token%}
+							{{ user_form.as_p }}
+							<br><br>
+							<div class="text-center">
+								<input class="btn btn-primary btn-lg" type="Submit" name="Guardar" placeholder="Guardar Información">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock content %}
