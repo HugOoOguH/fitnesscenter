@@ -18,23 +18,8 @@
 
     </head>
     <body>
-        <div id = "header">
-            <a href="{% url "shop_product:product_list"%}" class="logo">Productos</a>
-            <div id="navbar" class="navbar-collapse collapse navbar-right" aria-expanded="false" style="height: 1px;">
-					<ul class="nav navbar-nav">
-						{%if request.user.is_authenticated%}
-						<li><a href="{% url "accounts:login" %}">Menú</a></li>
-                        <li><a href="#prueba">Inventario</a></li>
-                        <li><a href="#prueba">Clientes</a></li>
-                        <li><a href="#prueba">Reportes</a></li>
-						<li><a href="{% url "accounts:logout" %}">Cerrar  Sesión</a></li>
-						{%else%}
-						<li><a href="{% url "accounts:login" %}">Iniciar Sesión</a></li>
-						{%endif%}
-					</ul>
-					</div><!--/.nav-collapse -->
-        </div>
-        <div id="subheader">
+        {% include "base_sis.html"%} 
+        <div id="subheader" style="padding-top: 80px;">
             <div class="cart">
             {% with total_items=cart|length %}
                 {% if cart|length > 0 %}

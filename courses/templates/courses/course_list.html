@@ -29,7 +29,12 @@
                                 <h2 class="title">{{ course.name }}</h2>
                                 <p class="desc">Precio: ${{course.price}}</p>
                                 <p class="desc">Fecha de creación: {{course.start_date}}</p>
-						    </div>
+                                {% if course.available%}
+                                <p class="label label-success">Disponible</p>
+                                {%else %}
+                                <p class="label label-danger">No Disponible</p>
+                                {%endif%}
+                            </div>
 
                             <div class="social">
                                 <ul>

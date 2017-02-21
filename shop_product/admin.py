@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Category, Product
-
+from courses.models import Course
 # Register your models here.
 
 class CategoryAdmin(admin.ModelAdmin):

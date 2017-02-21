@@ -3,6 +3,7 @@ from django.core.urlresolvers import reverse
 
 
 
+
 class Category(models.Model):
     name =  models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, db_index=True, unique=True)
@@ -41,3 +42,6 @@ class Product(models.Model):
     
     def get_absolute_url(self):
         return reverse ('shop_product:product_detail', args= [self.id, self.slug])
+
+
+
