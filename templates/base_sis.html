@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-
 {%load static%}
-
 <html lang="es">
 
 	<head>
@@ -16,10 +14,9 @@
 		<link href="{%static 'css/bootstrap.min.css'%}" rel="stylesheet">
 		<link href="{%static 'css/new_sis.css'%}" rel="stylesheet">
 		<link href="{%static 'css/animate.css'%}" rel="stylesheet">
-		
+		<link href="{%static 'css/dashboard.css'%}" rel="stylesheet">
 
 		
-		{%block head%} {%endblock head%}
 	</head>
 
 	<body>	
@@ -39,37 +36,66 @@
 					<div id="navbar" class="navbar-collapse collapse navbar-right" aria-expanded="false" style="height: 1px;">
 					<ul class="nav navbar-nav">
 						{%if request.user.is_authenticated%}
-						<li><a href="#prueba">Pagos</a></li>
-						<li><a href="#prueba">Reportes</a></li>
-						<li><a href="#" class="user">{{request.user}}</a></li>
-						<li><a href="#"><img src="{{ adm.photo.url }}" class="img-circle photo_perfil"></a></li>
 						<li><a href="{% url "accounts:logout" %}">Cerrar  Sesión</a></li>
+						<li class="btn-group" role="group">		
+						<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top: 8px;">
+							Menu
+						<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" style="background: seagreen;">
+							<li><a href="{% url 'accounts:list-client' 'void'%}">Clientes</a></li>
+							<li><a href="{%url 'shop_product:product_list'%}">Productos</a></li>
+							<li><a href="#">Visitas</a></li>
+							<li><a href="{%url 'courses:list'%}">Clases</a></li>
+							<li><a href="#">Reportes</a></li>
+						</ul>
+						</li>
+						
 						{%else%}
 						<li><a href="{% url "accounts:login" %}">Iniciar Sesión</a></li>
 						{%endif%}
 					</ul>
-					
 					</div><!--/.nav-collapse -->
 				</div>
 			</nav>
 		</div>
 	</div>
+	{% if request.user.is_authenticated%}
 
-	 	
-
-
-
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				<ul class="nav nav-sidebar profile">
+					<li><img src="img/ivan.jpg"  class="img-circle photo_perfil" height="80" width="80"></li>
+					<li><h2>Usuario: Ivan</h2></li>
+				</ul>
+				<ul class="nav nav-sidebar">
+					<li class="active"><a href="{% url 'accounts:list-client' 'void'%}">Clientes</a></li>
+					<li><a href="{%url 'shop_product:product_list'%}">Productos</a></li>
+					<li><a href="#">Visitas</a></li>
+					<li><a href="{%url 'courses:list'%}">Clases</a><li>
+					<li><a href="#">Reportes</a></li>
+				</ul>			
+			</div>
+			<div  class="col-sm-9 col-offset-3 col-md-10 col-md-offset-2 ">
+					{%block sis%}
+					{%endblock sis%}
+                    
+			</div>		
+		</div>
+	</div> 	
+	{%else%}
 	{%block content%}
-
+	
 	{%endblock content%}
+	{%endif%}
+
+
     <!-- jQuery -->
     <script src="{%static 'js/jquery-3.1.1.js'%}"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{%static 'js/bootstrap.min.js'%}"></script>
-	
-	 {%block scripts%}
-	 {%endblock scripts%}
 	</body>
 
 </html>
