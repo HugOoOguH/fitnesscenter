@@ -29,11 +29,13 @@ INSTALLED_APPS = [
     'social.apps.django_app.default',
     'monthlypayments',
     'shop_product',
-    'class',
+    'courses',
     'visits',
     'home',
     'cart',
     'orders',
+    #apps de terceros
+    'crispy_forms',
 
 ]
 
@@ -159,3 +161,5 @@ CART_SESSION_ID = 'cart'
 #     'social.pipeline.social_auth.load_extra_data',
 #     'social.pipeline.user.user_details',
 # }
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'

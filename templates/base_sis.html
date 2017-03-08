@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 {%load static%}
 
 <html lang="es">
@@ -15,6 +16,7 @@
 		<link href="{%static 'css/bootstrap.min.css'%}" rel="stylesheet">
 		<link href="{%static 'css/new_sis.css'%}" rel="stylesheet">
 		<link href="{%static 'css/animate.css'%}" rel="stylesheet">
+		
 
 		
 		{%block head%} {%endblock head%}
@@ -40,7 +42,7 @@
 						<li><a href="#prueba">Pagos</a></li>
 						<li><a href="#prueba">Reportes</a></li>
 						<li><a href="#" class="user">{{request.user}}</a></li>
-						<li><a href="#"><img  src="{% if request.user.photo %}{{ user.photo.url }}{% else %}{% static "img/404.jpg" %}{% endif %}" class="img-circle photo_perfil"></a></li>
+						<li><a href="#"><img src="{{ adm.photo.url }}" class="img-circle photo_perfil"></a></li>
 						<li><a href="{% url "accounts:logout" %}">Cerrar  Sesión</a></li>
 						{%else%}
 						<li><a href="{% url "accounts:login" %}">Iniciar Sesión</a></li>

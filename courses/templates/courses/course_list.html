@@ -1,0 +1,53 @@
+{% extends "base_sis.html" %}
+
+{% load static%}
+
+{%block head%}
+    <link href="{% static 'css/class.css'%}" rel="stylesheet">
+{%endblock head%}
+
+{% block content %}
+<div style="padding-top: 50px;"> 
+    <div class="text-center">      
+        <h1>Clases</h1>
+    </div>
+    <div style="text-align:center; padding-bottom: 5px;">
+        <a href="{% url "courses:new" %}">
+        <button type="button" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Agregar
+        </button>
+        </a>
+    </div>
+    <div class="container"> 
+        <div class="row">
+            <div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+                <ul class="event-list">
+                    {% for course in object_list %}
+                        <li>
+                            <img src="{% if course.picture %}{{ course.picture.url }}{% else %}{% static "img/404.jpg"%}{% endif %}"  height="80" >
+                            <div class="info">
+                                <h2 class="title">{{ course.name }}</h2>
+                                <p class="desc">Precio: ${{course.price}}</p>
+                                <p class="desc">Fecha de creación: {{course.start_date}}</p>
+                                {% if course.available%}
+                                <p class="label label-success">Disponible</p>
+                                {%else %}
+                                <p class="label label-danger">No Disponible</p>
+                                {%endif%}
+                            </div>
+
+                            <div class="social">
+                                <ul>
+                                   <!-- <li class="facebook" style="width:33%;"><a href="{% url "courses:detail" course.id %}"><span class="glyphicon glyphicon-send"></span></a></li>-->
+                                    <li class="twitter" style="width:34%;"><a href="{% url "courses:edit" course.id %}"><span class="glyphicon glyphicon-pencil"></span></a></li>
+                                    <li class="google-plus" style="width:33%;"><a href="{% url "courses:delete" course.id %}"><span class="glyphicon glyphicon-minus"></span></a></li>
+                                </ul>
+						    </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content%}
