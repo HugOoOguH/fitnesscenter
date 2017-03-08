@@ -1,22 +1,28 @@
 {% extends 'base_sis.html' %} 
+{% load crispy_forms_tags%}
 {% load static %}
-
+{%block head%}
+<link href="{% static 'css/center.css'%}" rel="stylesheet">
+{%endblock head%}
 {%block content%}
 
+<div class="container" style="padding-top: 100px;">
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-3 bg-success">
+				{% if form.erros %}
+					<h2 class="letter_sis">Tu usuario y contraseña no concuerdan, por favor intentalo nuevamente.</h2>
+				{% else %}
+					<h2 class="letter_sis">Iniciar Sesión</h2>
+				{% endif %}
 
-<div class="cont_login text-center" style="padding-top: 150px;">
-		{% if form.erros %}
-			<h2 class="letter_sis">Tu usuario y contraseña no concuerdan, por favor intentalo nuevamente.</h2>
-		{% else %}
-			<h2 class="letter_sis">Iniciar Sesión</h2>
-		{% endif %}
-
-		<form action="{%url 'accounts:login'%}" method="post" class="login">
-			{%csrf_token%}
-			{{form.as_p}}
-			<input type="hidden" name="next" value="{{next}}">
-			<input type="submit" name="submit" value="Iniciar Sesión">
-		</form>
+				<form action="{%url 'accounts:login'%}" method="post" class="login">
+					{%csrf_token%}
+					{{form|crispy}}
+					<input type="hidden" name="next" value="{{next}}">
+					<input type="submit" name="submit" value="Iniciar Sesión" class="btn btn-success">
+				</form>
+		</div>
+	</div>
 </div>
 {%endblock content%}
 
