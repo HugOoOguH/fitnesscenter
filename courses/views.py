@@ -24,3 +24,6 @@ class CourseUpdate(UpdateView):
 class CourseDelete(DeleteView):
     model = Course
     success_url = reverse_lazy('courses:list')
+
+    def custom_404(request):
+        return  render(request,'404.html')
