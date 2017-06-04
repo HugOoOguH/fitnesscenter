@@ -9,13 +9,13 @@ class SuccessManager(models.Manager):
 	def get_queryset(self):
 		return super(SuccessManager, self).get_queryset().filter(status='PA')
 
-class WarningManager(models.Manager):
-	def get_queryset(self):
-		return super(WarningManager, self).get_queryset().filter(status='PE')
+# class WarningManager(models.Manager):
+# 	def get_queryset(self):
+# 		return super(WarningManager, self).get_queryset().filter(status='PE')
 
-class DangerManager(models.Manager):
-	def get_queryset(self):
-		return super(DangerManager, self).get_queryset().filter(status='AT')
+# class DangerManager(models.Manager):
+# 	def get_queryset(self):
+# 		return super(DangerManager, self).get_queryset().filter(status='AT')
 
 
 # Create your models here.
@@ -38,14 +38,16 @@ class Client(models.Model):
 	status = models.CharField(max_length=2, choices=STATUS_CLIENT, default='PA', blank=True, null=True)
 	objects = models.Manager()
 	pagado = SuccessManager()
-	pendiente = WarningManager()
-	atrasado = DangerManager()
+	# pendiente = WarningManager()
+	# atrasado = DangerManager()
 	class Meta:
 		verbose_name = "Client"
 		verbose_name_plural = "Clients"
 
 	def __str__(self):
 		return 'Cliente {}'.format(self.user_client)
+
+	
 
 class Administrator(models.Model):
 	user_administrator = models.OneToOneField(settings.AUTH_USER_MODEL)

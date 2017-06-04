@@ -1,10 +1,20 @@
 {%extends 'base_sis.html'%}
 {%load static%}
 
-{% block sis %}
-	<h2>Tu sesión se ha cerrado con exito</h2>
-	<h2>Iniciar sesión nuevamente: </h2>
-	<a href="{%url 'accounts:login'%}">
-		<button>Entrar</button>
-	</a>
-{% endblock sis%}
+{% block content %}
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 div col-md-offset-2">
+				<h2 class="text-center">Tu sesión se ha cerrado con exito</h2>
+				<hr>
+				<h3>Iniciar sesión nuevamente: </h3>
+				<div class="text-center">
+					<a href="{%url 'accounts:login'%}" class="btn btn-success btn-lg">
+						Entrar
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock content%}

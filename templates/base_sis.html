@@ -43,7 +43,7 @@
 						<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" style="background: seagreen;">
-							<li><a href="{% url 'accounts:list-client' 'void'%}">Clientes</a></li>
+							<li><a href="{% url 'accounts:list-client' %}">Clientes</a></li>
 							<li><a href="{%url 'shop_product:product_list'%}">Productos</a></li>
 							<li><a href="#">Visitas</a></li>
 							<li><a href="{%url 'courses:list'%}">Clases</a></li>
@@ -70,7 +70,7 @@
 					<li><h2>Usuario: Ivan</h2></li>
 				</ul>
 				<ul class="nav nav-sidebar">
-					<li class="active"><a href="{% url 'accounts:list-client' 'void'%}">Clientes</a></li>
+					<li class="active"><a href="{% url 'accounts:list-client'%}">Clientes</a></li>
 					<li><a href="{%url 'shop_product:product_list'%}">Productos</a></li>
 					<li><a href="#">Visitas</a></li>
 					<li><a href="{%url 'courses:list'%}">Clases</a><li>

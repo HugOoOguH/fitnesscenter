@@ -163,3 +163,18 @@ CART_SESSION_ID = 'cart'
 # }
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+from django.core.urlresolvers import reverse_lazy
+
+LOGIN_REDIRECT_URL = reverse_lazy('accounts:profile')
+LOGIN_URL = reverse_lazy('accounts:login')
+LOGOUT_URL = reverse_lazy('accounts:logout')
+
+#Para enviar un email
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = 'hugo.enscruz@gmail.com'
+# EMAIL_HOST_PASSWORD = 'alucard::9412'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

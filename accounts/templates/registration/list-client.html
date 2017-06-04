@@ -9,22 +9,29 @@
 				<div class="col-md-6 col-md-offset-6">
 					<ul class="list-unstyled list-inline">
 						<li>
-							<a href="{% url 'accounts:list-client' 'PA'%}">
-								<buttton class="btn btn-success">
+							<a href="{% url 'accounts:list-client' %}">
+								<button class="btn btn-primary btn-lg">
+									Todos
+								</button>
+							</a>
+						</li>
+						<li>
+							<a href="{% url 'accounts:list-client-filter' 'PA'%}">
+								<buttton class="btn btn-success btn-lg">
 									Pagado
 								</buttton>
 							</a>
 						</li>
 						<li>
-							<a href="{% url 'accounts:list-client' 'PE'%}">
-								<buttton class="btn btn-warning">
+							<a href="{% url 'accounts:list-client-filter' 'PE'%}">
+								<buttton class="btn btn-warning btn-lg">
 									Pendiente
 								</buttton>
 							</a>
 						</li>
 						<li>
-							<a href="{% url 'accounts:list-client' 'AT'%}">
-								<buttton class="btn btn-danger">
+							<a href="{% url 'accounts:list-client-filter' 'AT'%}">
+								<buttton class="btn btn-danger btn-lg">
 									Atrasado
 								</buttton>
 							</a>
@@ -37,6 +44,9 @@
 			<div class="panel-body">
 				<ul class="list-group">
 					{% for client in clients %}
+						<div class="container-fluid">
+						<div class="row">
+						<div class="col-md-10">
 						<a href="{% url 'accounts:detail-client' client.user_client_id %}" class="list-group-item">
 							<div class="container-fluid">
 								<div class="row">
@@ -55,7 +65,7 @@
 
 									<div class="col-md-2">
 										{{client.user_client.email}}
-									</div>
+									</div>									
 
 									<div class="col-md-2">
 										{{client.start_date}}
@@ -75,6 +85,14 @@
 								</div><!-- div Row -->
 							</div><!-- div Container -->
 						</a><!-- a -->
+						</div>
+						<div class="col-md-2">
+							<a href="{% url 'monthlypayments:page-client' client.unique_id %}">
+								<button class="btn btn-primary btn-lg">Cobrar</button>
+							</a>
+						</div>
+						</div>
+						</div>
 					{% endfor %}
 				</ul><!-- div list-group -->
 			</div><!-- div panel-body -->

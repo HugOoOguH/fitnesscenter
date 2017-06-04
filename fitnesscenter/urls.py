@@ -4,13 +4,16 @@ from django.views.static import serve
 from django.conf import settings
 from home import urls as urlsHome
 from accounts import urls as urlsAccounts
+from monthlypayments import urls as urlsMonthlypayments
 from django.conf.urls.static import static
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^courses/',include('courses.urls', namespace="courses")),
+    #urls para la aplicacion accounts
     url(r'^accounts/', include(urlsAccounts, namespace='accounts')),
+    url(r'^courses/',include('courses.urls', namespace="courses")),
+    url(r'^monthlypayments/', include(urlsMonthlypayments, namespace='monthlypayments')),
     url(r'^orders/', include('orders.urls', namespace='orders')),
     url(r'^shop/', include('shop_product.urls',namespace='shop_product')),
     url(r'^cart/', include ('cart.urls', namespace='cart')),
