@@ -1,0 +1,28 @@
+#nav {
+     background-color:seagreen;
+     border-style: hidden;
+}
+
+#nav-brand{
+    color: white;
+}
+
+#nav-brand:hover{
+    color: lime;
+}
+
+div.navbar-collapse.collapse.navbar-right ul li a{
+    color: white;
+}
+
+div.navbar-collapse.collapse.navbar-right ul li a:hover{
+    color:lime;
+}
+
+img.photo_perfil{
+    width: 25px;
+    height: 25px;
+}
+.user{
+     font-weight:bold;
+}

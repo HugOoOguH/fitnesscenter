@@ -89,19 +89,23 @@ class ProfileView(View):
 
 class ListClients(View):
 	@method_decorator(login_required)
-	def get(self, request, vvalue):
+	def get(self, request, vvalue = None):
 		template_name = "registration/list-client.html"
-		if vvalue == 'void':
+		if vvalue:
+			clients = Client.pagado.filter(status=vvalue)
+		else:
 			clients = Client.objects.all()
+		# if vvalue == 'void':
+		# 	clients = Client.objects.all()
 
-		if vvalue == 'PA':
-			clients = Client.pagado.filter(status='PA')
+		# if vvalue == 'PA':
+		# 	clients = Client.pagado.filter(status='PA')
 
-		if vvalue == 'PE':
-			clients = Client.pendiente.filter(status='PE')
+		# if vvalue == 'PE':
+		# 	clients = Client.pendiente.filter(status='PE')
 
-		if vvalue == 'AT':
-			clients = Client.atrasado.filter(status='AT')
+		# if vvalue == 'AT':
+		# 	clients = Client.atrasado.filter(status='AT')
 
 		# clients = Client.objects.all()
 		context = {
