@@ -13,5 +13,3 @@ urlpatterns = [
     url(r'^editar/(?P<pk>\d+)$', CourseUpdate.as_view(), name='edit'),
     url(r'^borrar/(?P<pk>\d+)$', CourseDelete.as_view(), name='delete'),
 ]
-
-handler404 = "views.custom_404"

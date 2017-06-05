@@ -6,3 +6,5 @@ urlpatterns = [
 	url(r'^menu', views.MenuView.as_view(), name="menu_admin"),
 	
 ]
+
+handler404 = "views.custom_404"
