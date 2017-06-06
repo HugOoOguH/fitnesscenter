@@ -5,13 +5,14 @@ from django.contrib.auth.models import User
 from django.utils.decorators  import method_decorator
 from django.contrib.auth.decorators import login_required, user_passes_test
 from .models import Administrator, Client
-
-class RegistryView(View):
-	@method_decorator(login_required)
+from django.contrib.admin.views.decorators import staff_member_required
+	
 	# @staff_member_required
 	# @method_decorator(staff_member_required)
-	def get(self, request):
 
+class RegistryView(View):
+	@method_decorator(staff_member_required)
+	def get(self, request):
 		template_name = "registration/registry_admin.html";	
 		form = UserRegistrationForm()
 		form_adm = AdminForm()
@@ -29,6 +30,7 @@ class RegistryView(View):
 			new_user = new_user_f.save(commit=False)
 			new_admin = new_admin_f.save(commit=False) 
 			new_user.set_password(new_user_f.cleaned_data['password'])
+			new_user.is_staff = True
 			new_user.save()
 			new_admin.user_administrator = new_user
 			# admin = Administrator()

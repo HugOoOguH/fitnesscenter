@@ -173,7 +173,7 @@ LOGOUT_URL = reverse_lazy('accounts:logout')
 #Para enviar un email
 # EMAIL_HOST = 'smtp.gmail.com'
 # EMAIL_HOST_USER = 'hugo.enscruz@gmail.com'
-# EMAIL_HOST_PASSWORD = 'alucard::9412'
+# EMAIL_HOST_PASSWORD = 
 # EMAIL_PORT = 587
 # EMAIL_USE_TLS = True
 
