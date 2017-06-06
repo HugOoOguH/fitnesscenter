@@ -6,15 +6,19 @@ from django.utils.decorators  import method_decorator
 from django.contrib.auth.decorators import login_required, user_passes_test
 from .models import Administrator, Client
 
+#Clase para registrar administradores
 class RegistryView(View):
+	
+	#El decorador permite que solo usuarios staff pueden registrar administradores
 	@method_decorator(login_required)
-	# @staff_member_required
-	# @method_decorator(staff_member_required)
-	def get(self, request):
 
+	def get(self, request):
+		#template para el registro de administradores
 		template_name = "registration/registry_admin.html";	
+		#formularios para el registo de usuarios provinenen de las clases definidas en foms.py de esta aplicacion
 		form = UserRegistrationForm()
 		form_adm = AdminForm()
+		#Diccionario con los objetos de los formularios para el template
 		context = {
 			'form' : form,
 			'form_adm' : form_adm,
@@ -40,6 +44,7 @@ class RegistryView(View):
 				'form':new_user_f,
 			}
 			return render (request, template_name, context)
+
 
 class RegistryClient(View):
 	@method_decorator(login_required)
