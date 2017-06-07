@@ -30,7 +30,8 @@ class RegistryView(View):
 			new_user = new_user_f.save(commit=False)
 			new_admin = new_admin_f.save(commit=False) 
 			new_user.set_password(new_user_f.cleaned_data['password'])
-			new_user.is_staff = True
+			if new_admin.administrator_root:
+				new_user.is_staff = True
 			new_user.save()
 			new_admin.user_administrator = new_user
 			# admin = Administrator()
@@ -42,6 +43,12 @@ class RegistryView(View):
 				'form':new_user_f,
 			}
 			return render (request, template_name, context)
+
+class RegistryCompleteView(View):
+	@method_decorator(login_required)
+	def get(self, request):
+		template_name = "accounts/registry_complete.html"
+		return render(request, template_name)
 
 class RegistryClient(View):
 	@method_decorator(login_required)
@@ -77,15 +84,13 @@ class RegistryClient(View):
 			}
 			return render(request, template_name, context)
 
-
-
 class ProfileView(View):
 	@method_decorator(login_required)
 	def get(self, request):
 		template_name = "registration/profile.html"
 		adm = Administrator.objects.get(user_administrator=request.user)
 		context = {
-		'adm':adm,
+			'adm':adm,
 		}
 		return render(request, template_name, context)
 

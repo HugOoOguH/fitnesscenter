@@ -25,7 +25,7 @@ class Client(models.Model):
 		('PE', 'Pendiente'),
 		('AT', 'Atrasado'), 
 		)
-	user_client = models.OneToOneField(settings.AUTH_USER_MODEL, blank=True, null=True)
+	user_client = models.OneToOneField(settings.AUTH_USER_MODEL, blank=True, null=True, related_name="user_clien")
 	unique_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 	birth_date = models.DateField(default=datetime.now, blank=True)
 	age = models.IntegerField()
@@ -50,7 +50,7 @@ class Client(models.Model):
 	
 
 class Administrator(models.Model):
-	user_administrator = models.OneToOneField(settings.AUTH_USER_MODEL)
+	user_administrator = models.OneToOneField(settings.AUTH_USER_MODEL, related_name="user_admin" )
 	BOOL_CHOICES = ((True, 'Si'), (False, 'No'))
 	photo = models.ImageField(upload_to="administrators", blank=True, null=True)
 	administrator_root =  models.BooleanField(choices = BOOL_CHOICES, default=False)

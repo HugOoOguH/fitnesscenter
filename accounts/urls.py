@@ -27,6 +27,8 @@ urlpatterns = [
 
 	#url destinada para el registro de administradores
 	url(r'^registry/$', views.RegistryView.as_view(), name='registry'),
+	url(r'^registry-complete', views.RegistryCompleteView.as_view(), name="registry-complete"),
+	
 	#url destinada para el registro de clientes
 	url(r'^registry_client/$', views.RegistryClient.as_view(), name='regclient'),
 	
@@ -37,6 +39,6 @@ urlpatterns = [
 	#url que sirve para mostrar la vista detalle de cada cliente
 	url(r'^detail-client/(?P<id_client>\d+)$', views.DetailClient.as_view(), name="detail-client"),
 	#Eliminar menu
-	url(r'^menu/$', views.Menu.as_view(), name="menu"),
+	# url(r'^menu/$', views.Menu.as_view(), name="menu"),
 ]
 
