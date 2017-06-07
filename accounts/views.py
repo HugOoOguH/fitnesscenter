@@ -87,8 +87,8 @@ class RegistryClient(View):
 class ProfileView(View):
 	@method_decorator(login_required)
 	def get(self, request):
+		adm = get_object_or_404(Administrator, user_administrator=request.user)
 		template_name = "registration/profile.html"
-		adm = Administrator.objects.get(user_administrator=request.user)
 		context = {
 			'adm':adm,
 		}
@@ -116,7 +116,7 @@ class ListClients(View):
 
 		# clients = Client.objects.all()
 		context = {
-		'clients' : clients,
+			'clients' : clients,
 		}
 		return render(request, template_name, context)
 
