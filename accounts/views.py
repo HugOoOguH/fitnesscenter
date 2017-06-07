@@ -127,21 +127,21 @@ class DetailClient(View):
 		client = get_object_or_404(Client, user_client_id=id_client)
 		user_form = ClientForm(instance=client)
 		context = {
-		'client' : client,
-		'user_form' : user_form,
+			'client' : client,
+			'user_form' : user_form,
 		}
 		return render (request, template_name, context)
 
 	def post(self, request, id_client):
+		# client = get_object_or_404(Client, user_client_id=id_client)
 		template_name = "registration/detail_client.html"
 		new_client_c = ClientForm(request.POST,request.FILES)
 		if new_client_c.is_valid():
 			new_client = new_client_c.save(commit=False)
 			new_client.save()
-			return redirect('accounts:detail-client', id_client='1')
+			return redirect('accounts:profile')
 		else:
-			return redirect('accounts:detail-client', id_client='1')
-
+			return redirect('accounts:profile')
 
 class Menu(View):
 	def get(self, request):
