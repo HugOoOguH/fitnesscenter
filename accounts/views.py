@@ -133,18 +133,23 @@ class DetailClient(View):
 		return render (request, template_name, context)
 
 	def post(self, request, id_client):
-		# client = get_object_or_404(Client, user_client_id=id_client)
+		print("Entro la chingadera puto")
 		template_name = "registration/detail_client.html"
-		new_client_c = ClientForm(request.POST,request.FILES)
-		if new_client_c.is_valid():
-			new_client = new_client_c.save(commit=False)
-			new_client.save()
-			return redirect('accounts:profile')
+		client = get_object_or_404(Client, user_client_id=id_client)
+		user_form = ClientForm(instance=client, data=request.POST, files=request.FILES)
+		if user_form.is_valid():
+			user_form.save()
+			return redirect("accounts:detail-client", id_client=client.user_client_id)
 		else:
-			return redirect('accounts:profile')
+			context = {
+				'client':client,
+				'user_form':user_form,
+			}
+			return render(request, template_name, context)
 
-class Menu(View):
-	def get(self, request):
-		template_name = "registration/menu.html"
-		context = {}
-		return render(request, template_name, context)
+
+# class Menu(View):
+# 	def get(self, request):
+# 		template_name = "registration/menu.html"
+# 		context = {}
+# 		return render(request, template_name, context)

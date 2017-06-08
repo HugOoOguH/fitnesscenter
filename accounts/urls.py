@@ -36,8 +36,11 @@ urlpatterns = [
 	url(r'^list-client/$', views.ListClients.as_view(), name="list-client"),
 	#url destianada para mostrar una lista de clientes filtrados
 	url(r'^list-client/(?P<vvalue>[-\w]+)/$', views.ListClients.as_view(), name="list-client-filter"),
+	
 	#url que sirve para mostrar la vista detalle de cada cliente
-	url(r'^detail-client/(?P<id_client>\d+)$', views.DetailClient.as_view(), name="detail-client"),
+	url(r'^detail-client/(?P<id_client>\d+)/$', views.DetailClient.as_view(), name="detail-client"),
+	# url(r'^client-detail/(?P<ide>\d+)/'),
+
 	#Eliminar menu
 	# url(r'^menu/$', views.Menu.as_view(), name="menu"),
 ]
