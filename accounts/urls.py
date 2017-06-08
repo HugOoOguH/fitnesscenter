@@ -41,7 +41,5 @@ urlpatterns = [
 	url(r'^detail-client/(?P<id_client>\d+)/$', views.DetailClient.as_view(), name="detail-client"),
 	# url(r'^client-detail/(?P<ide>\d+)/'),
 
-	#Eliminar menu
-	# url(r'^menu/$', views.Menu.as_view(), name="menu"),
 ]
 
