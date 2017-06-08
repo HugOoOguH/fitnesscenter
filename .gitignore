@@ -90,7 +90,7 @@ ENV/
 
 # Ignorar Migraciones
 
-*/migrations
+#*/migrations
 
 #Ignorar base de datos
 
