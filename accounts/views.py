@@ -133,7 +133,6 @@ class DetailClient(View):
 		return render (request, template_name, context)
 
 	def post(self, request, id_client):
-		print("Entro la chingadera puto")
 		template_name = "registration/detail_client.html"
 		client = get_object_or_404(Client, user_client_id=id_client)
 		user_form = ClientForm(instance=client, data=request.POST, files=request.FILES)
