@@ -102,23 +102,11 @@ class ListClients(View):
 			clients = Client.pagado.filter(status=vvalue)
 		else:
 			clients = Client.objects.all()
-		# if vvalue == 'void':
-		# 	clients = Client.objects.all()
-
-		# if vvalue == 'PA':
-		# 	clients = Client.pagado.filter(status='PA')
-
-		# if vvalue == 'PE':
-		# 	clients = Client.pendiente.filter(status='PE')
-
-		# if vvalue == 'AT':
-		# 	clients = Client.atrasado.filter(status='AT')
-
-		# clients = Client.objects.all()
 		context = {
 			'clients' : clients,
 		}
 		return render(request, template_name, context)
+		
 
 class DetailClient(View):
 	@method_decorator(login_required)
@@ -152,3 +140,18 @@ class DetailClient(View):
 # 		template_name = "registration/menu.html"
 # 		context = {}
 # 		return render(request, template_name, context)
+	
+
+		# if vvalue == 'void':
+		# 	clients = Client.objects.all()
+
+		# if vvalue == 'PA':
+		# 	clients = Client.pagado.filter(status='PA')
+
+		# if vvalue == 'PE':
+		# 	clients = Client.pendiente.filter(status='PE')
+
+		# if vvalue == 'AT':
+		# 	clients = Client.atrasado.filter(status='AT')
+
+		# clients = Client.objects.all()
