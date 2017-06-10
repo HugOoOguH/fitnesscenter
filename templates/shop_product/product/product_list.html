@@ -8,11 +8,11 @@
   {% else%}
     Fitness Products
  {%endif%}
-{%endblock%}
+{%endblock title%}
 
-{% block content%}
-    <div id="sidebar">
-        <h3>Categorias</h3>
+{%block content%} 
+    <div id="sidebar" class="col-lg-3 col-md-3 col-sm-3">
+        <h3 class="user_detail">Categorias</h3>
         <ul>
             <li {% if not category %}class="selected"{% endif %}>
                 <a href="{% url "shop_product:product_list" %}">All</a>
@@ -24,21 +24,21 @@
         {% endfor %}
         </ul>
     </div>
-    <div id="main" class="product-list">
-        <h1>{% if category %}{{ category.name }}{% else %}Products{% endif %}</h1>
+    <div id="main" class="col-lg-6 col-md-3 col-sm-6">
+        <h1 class="user_detail">{% if category %}{{ category.name }}{% else %}Productos{% endif %}</h1>
         {% for product in products %}
-            <div class="item">
+            <div class="item col-lg-3">
                 <a href="{{ product.get_absolute_url }}">
                     <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/404.jpg" %}{% endif %}" style="width: 150px; height: 150px;">
                 </a><br>
                 <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
                 ${{ product.price }}
                 {% if product.available%}
-                <p class="label label-success">Disponible</p>
+                <p class="label label-info">Disponible</p>
                 {%else %}
                 <p class="label label-danger">No Disponible</p>
                 {%endif%}
             </div>
         {% endfor %}
     </div>
-{% endblock %}
+{%endblock %}

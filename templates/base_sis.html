@@ -17,6 +17,8 @@
 		<link href="{%static 'css/new_sis.css'%}" rel="stylesheet">
 		<link href="{%static 'css/animate.css'%}" rel="stylesheet">
 		<link href="{%static 'css/dashboard.css'%}" rel="stylesheet">
+		<link href="{%static 'css/base_shop.css'%}" rel="stylesheet">
+		
 
 		
 	</head>
@@ -33,14 +35,14 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand animated rollIn " id="nav-brand" href="{% url 'home' %}">Sport Center</a>
+					<a class="navbar-brand animated rollIn " id="nav-brand" href="{% url 'home' %}">Fitness Center</a>
 					</div>
 					<div id="navbar" class="navbar-collapse collapse navbar-right" aria-expanded="false" style="height: 1px;">
 					<ul class="nav navbar-nav">
 						{%if request.user.is_authenticated%}
 						<li><a href="{% url "accounts:logout-then-login" %}">Cerrar  Sesión</a></li>
 						<li class="btn-group" role="group">		
-						<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top: 8px;">
+						<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top: 8px;">
 							Menu
 						<span class="caret"></span>
 						</button>
@@ -76,11 +78,11 @@
 					<li><a href="{% url 'accounts:list-client'%}"><i class="fa fa-users"> </i> Clientes</a></li>
 					<li><a href="{%url 'shop_product:product_list'%}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Productos</a></li>
 					<li><a href="#"><i class="fa fa-male" aria-hidden="true"></i> Visitas</a></li>
-					<li><a href="{%url 'courses:list'%}"><i class="fa fa-heart" aria-hidden="true"></i> Clases</a><li>
+					<!--<li><a href="{%url 'courses:list'%}"><i class="fa fa-heart" aria-hidden="true"></i> Clases</a><li>-->
 					<li><a href="#"><i class="fa fa-pie-chart" aria-hidden="true"></i> Reportes</a></li>
 				</ul>			
 			</div>
-			<div  class="col-sm-9 col-offset col-md-10 col-md-offset-2">
+			<div  class="container col-lg-9 col-sm-9 col-offset col-md-10 col-md-offset-2">
 					{%block sis%}
 
 					{%endblock sis%}

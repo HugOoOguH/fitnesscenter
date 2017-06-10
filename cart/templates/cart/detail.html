@@ -6,16 +6,16 @@
 {% endblock %}
 
 {% block content %}
-  <h1>Fitness Shop</h1>
+  <h1 class="user_detail text-center">Fitness Center Orden</h1>
     <table class="cart">
         <thead>
             <tr>
-                <th>|Image|</th>
-                <th>|Product|</th>
-                <th>|Quantity|</th>
-                <th>|Remove|</th>
-                <th>|Unit price |</th>                
-                <th>|Price      |</th>
+                <th><i class="fa fa-camera-retro" aria-hidden="true"></i> Image</th>
+                <th><i class="fa fa-shopping-cart" aria-hidden="true"></i> Product</th>
+                <th><i class="fa fa-sort-numeric-desc" aria-hidden="true"></i> Quantity</th>
+                <th><i class="fa fa-times" aria-hidden="true"></i>    Remove</th>
+                <th><i class="fa fa-money" aria-hidden="true"></i> Unit price          </th>                
+                <th><i class="fa fa-usd" aria-hidden="true"></i> Price      </th>
             </tr>
         </thead>
         <tbody>
@@ -24,7 +24,7 @@
             <tr>
                 <td>
                     <a href="{{ product.get_absolute_url }}">
-                        <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+                        <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/404.jpg" %}{% endif %}">
                     </a>
                 </td>
                 <td>{{ product.name }}</td>
@@ -49,7 +49,7 @@
         <tr class="total">
             <td>Total</td>
             <td colspan="4"></td>
-            <td class="num">${{ cart.get_total_price }}</td>
+            <td class="num"><i class="fa fa-usd" aria-hidden="true"></i> {{ cart.get_total_price }}</td>
         </tr>
         </tbody>
     </table>
