@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from accounts.models import Client, Administrator
 from .forms import PageClientForm
 from .models import Payment, PaymentMonthly
+
 # Create your views here.
 class PageClient(View):
 	def get(self, request, id):

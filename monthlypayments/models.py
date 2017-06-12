@@ -18,8 +18,8 @@ class Payment(models.Model):
 		return 'Pago de el cliente {}'.format(self.client_payment)
 
 class PaymentMonthly (models.Model):
-	client_monthly = models.ForeignKey(Client, related_name="paymentmonthly")
 	BOOL_CHOICES = ((True, 'Pagado'), (False, 'No Pagado'))
+	client_monthly = models.ForeignKey(Client, related_name="paymentmonthly")
 	deadline_date = models.DateField()
 	status = models.BooleanField(choices = BOOL_CHOICES, default=False)
 	amount_monthly = models.FloatField()

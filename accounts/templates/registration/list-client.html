@@ -2,103 +2,31 @@
 {%load static%}
 {% include "sidebar_sis.html" %}
 {%block sis%}
-	<div style="padding-top: 150px;">
+<div style="padding-top: 50px;">
 		{% if request.user.user_admin %}
-					<div class="text-center strong"><h1>Lista de Clientes</h1></div>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-md-offset-6">
-						<ul class="list-unstyled list-inline">
-							<li>
-								<a href="{% url 'accounts:list-client' %}">
-									<button class="btn btn-primary btn-lg">
-										Todos
-									</button>
-								</a>
-							</li>
-							<li>
-								<a href="{% url 'accounts:list-client-filter' 'PA'%}">
-									<buttton class="btn btn-success btn-lg">
-										Pagado
-									</buttton>
-								</a>
-							</li>
-							<li>
-								<a href="{% url 'accounts:list-client-filter' 'PE'%}">
-									<buttton class="btn btn-warning btn-lg">
-										Pendiente
-									</buttton>
-								</a>
-							</li>
-							<li>
-								<a href="{% url 'accounts:list-client-filter' 'AT'%}">
-									<buttton class="btn btn-danger btn-lg">
-										Atrasado
-									</buttton>
-								</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="panel panel-success">
-				<div class="panel-body">
-					<ul class="list-group">
-						{% for client in clients %}
-							<div class="container-fluid">
-							<div class="row">
-							<div class="col-md-10">
-							<a href="{% url 'accounts:detail-client' client.user_client_id %}" class="list-group-item">
-								<div class="container-fluid">
-									<div class="row">
-										
-										<div class="col-md-1">
-											<img src="{{client.photo.url}}" class="img-responsive img-circle" style="width: 80%;">
-										</div>
-
-										<div class="col-md-3">
-											{{client.user_client.first_name}}
-										</div>
-
-										<div class="col-md-3">
-											{{client.user_client.last_name}}
-										</div>
-
-										<div class="col-md-2">
-											{{client.user_client.email}}
-										</div>									
-
-										<div class="col-md-2">
-											{{client.start_date}}
-										</div>
-
-										<div class="col-md-1">
-											{% if client.status == "PA" %}
-												<div class="alert alert-success" role="alert"></div>
-											{% else %}
-												{% if client.status == "PE" %}
-													<div class="alert alert-warning" role="alert"></div>
-												{% else %}
-													<div class="alert alert-danger" role="alert"></div>
-												{% endif %}
-											{% endif %}
-										</div>
-									</div><!-- div Row -->
-								</div><!-- div Container -->
-							</a><!-- a -->
-							</div>
-							<div class="col-md-2">
-								<a href="{% url 'monthlypayments:page-client' client.unique_id %}">
-									<button class="btn btn-primary btn-lg">Cobrar</button>
-								</a>
-							</div>
-							</div>
-							</div>
-						{% endfor %}
-					</ul><!-- div list-group -->
-				</div><!-- div panel-body -->
-			</div>
-		
+					<div class="text-center strong"><h1 class="user_detail">Lista de Clientes</h1></div>
+		{% for client in clients %}
+			<div class="cardBox">
+				
+                <div class="card">
+                          <div class="front">
+                            <h3>{{client.user_client.first_name}}</h3>
+                            <div><img src="{% if client.photo %}{{client.photo.url}}{%else%} {%static "img/404.png"%}{%endif%}" class="profile_img"></div>
+							<p><i class="fa fa-envelope" aria-hidden="true"> : {{client.user_client.email}}</i></p>
+							<p><i class="fa fa-phone" aria-hidden="true">: {{client.phone_num}}</i></p>
+						  </div>
+                          <div class="back">
+							<h3><a href="{% url 'accounts:detail-client' client.user_client_id %}">Cliente: {{client.user_client.first_name}} {{client.user_client.last_name}}</a></h3>
+                            <p>Fecha inicio: {{client.start_date}}</p>
+							<p><i class="fa fa-map-marker" aria-hidden="true"> : {{client.address}}.</i></p>
+							<p><i class="fa fa-history" aria-hidden="true"> : {{client.age}} años</i></p>
+							<p><i class="fa fa-heart" aria-hidden="true">: {{client.blood_type}}</i></p>
+							<a href="{% url 'monthlypayments:page-client' client.unique_id %}" class="btn btn-info" type="button">Cobrar</a>	
+                          </div>
+                </div>
+				
+            </div>
+		{% endfor %}
 		{% else %}
 
 			<div class="container">

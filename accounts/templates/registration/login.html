@@ -10,20 +10,23 @@
 
 	<div class="container" style="padding-top: 100px;">
 		<div class="row">
-			<div class="col-sm-6 col-sm-offset-3 bg-success">
+				<h2 class="user_detail text-center">Bienvenido a Fitness Center</h2>
+			<div class="col-sm-6 col-sm-offset-3 bg-info">
 					{% if form.erros %}
 						<h2 class="letter_sis">Tu usuario y contraseña no concuerdan, por favor intentalo nuevamente.</h2>
 					{% else %}
-						<h2 class="letter_sis">Iniciar Sesión</h2>
+						<h2 class="user_detail text-center">Iniciar Sesión</h2>
 					{% endif %}
 
 					<form action="{%url 'accounts:login'%}" method="post" class="login">
 						{%csrf_token%}
 						{{form|crispy}}
 						<input type="hidden" name="next" value="{{next}}">
-						<input type="submit" name="submit" value="Iniciar Sesión" class="btn btn-success">
+						<div class="text-center">
+						<input type="submit" name="submit" value="Iniciar Sesión" class="btn btn-info">
+						</div>
 					</form>
-					<a href="{% url 'accounts:password_reset' %} "><h3>¿Olvidates tu contraseña?</h3></a>
+					<a href="{% url 'accounts:password_reset' %} "><h5 class="user_detail text-center">¿Olvidates tu contraseña?</h5></a>
 			</div>
 		</div>
 	</div>

@@ -5,19 +5,19 @@
 	<div style="padding-top: 50px;">
 		{% if request.user.user_admin %}
 			<div class="text-center strong">
-				<h1 class="page-header">Detalle Cliente</h1>
+				<h1 class="user_detail">Información Cliente</h1>
 			</div>
-			<div class="container">
+			<div class="container col-lg-10 col-md-10">
 				<div class="row">
-					<div class="col-md-4 col-sm-6 col-xs12">
+					<div class="col-lg-4 col-md-3 col-sm-4 col-xs-offset">
 						<div class="text-center">
-							<img src="{{client.photo.url}}" class="img-responsive avatar img-circle img-thumbnail" alt="avatar">
-							<h6>Cambiar foto de el cliente...</h6>
-							<input type="file" name="image" class="text-center center-block well well-sm">
+							<h2 class="user_detail text-center">Foto Cliente</h2>
+							<img src="{{client.photo.url}}" class="img-responsive profile_img" alt="avatar">
+							<!--<input type="file" name="image" class="text-center center-block well well-sm">-->
 						</div>
 					</div>
 
-					<div class="col-md-8 col-sm-6 col-xs-12">
+					<div class="col-lg-6 col-lg-offset-2 col-md-7 col-sm-6 col-xs-offset">
 						<h1>
 							{% if client.status == "PA" %}
 								<div class="alert alert-success text-center" role="alert">PAGADO</div>
@@ -29,14 +29,13 @@
 								{% endif %}
 							{% endif %}
 						</h1>
-						<h3 class="strong text-center">Información sobre el cliente</h3>
+						<h3 class="user_detail text-center">Detalle sobre el cliente</h3>
 						<form action="." method="post" enctype='multipart/form-data'>
 							{%csrf_token%}
 							{{ user_form.as_p }}
-							<br><br>
-							olo
+							
 							<div class="text-center">
-								<input type="submit" class="btn btn-primary btn-lg" name="enviar" value="Enviarrrrrrrr">
+								<input type="submit" class="btn btn-primary btn-lg" name="enviar" value="Guardar">
 							</div>
 						</form>
 					</div>
