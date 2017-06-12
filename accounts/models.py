@@ -9,15 +9,6 @@ class SuccessManager(models.Manager):
 	def get_queryset(self):
 		return super(SuccessManager, self).get_queryset().filter(status='PA')
 
-# class WarningManager(models.Manager):
-# 	def get_queryset(self):
-# 		return super(WarningManager, self).get_queryset().filter(status='PE')
-
-# class DangerManager(models.Manager):
-# 	def get_queryset(self):
-# 		return super(DangerManager, self).get_queryset().filter(status='AT')
-
-
 # Create your models here.
 class Client(models.Model):
 	STATUS_CLIENT = (
