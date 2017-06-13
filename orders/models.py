@@ -1,9 +1,12 @@
 from django.db import models
 from shop_product.models import Product
+from accounts.models import Administrator
+ 
 
 
 class Order(models.Model):
-    user_name = models.CharField(max_length=100)
+    user_administrator = models.ForeignKey(Administrator, related_name='user_administrators')
+    #user_name = models.CharField(max_length=100)
     created = models.DateTimeField(auto_now_add= True)
     updated = models.DateTimeField(auto_now = True)
 

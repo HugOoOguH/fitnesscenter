@@ -3,10 +3,12 @@
 {% include "sidebar_sis.html" %}
 
 {% block sis %}
-	<h1>Pago de el cliente {{ cliente.user_client.first_name }}</h1>
+	<div style="padding: 50px;">
+	<h1 class="user_detail">Pago de el cliente {{ cliente.user_client.first_name }}</h1>
 	<form action="." method="post">
 		{% csrf_token %}
 		{{ form.as_p }}
 		<input type="submit" name="" value="Cobrar">
 	</form>
+	</div>
 {% endblock sis %}

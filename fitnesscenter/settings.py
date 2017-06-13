@@ -171,10 +171,10 @@ LOGIN_URL = reverse_lazy('accounts:login')
 LOGOUT_URL = reverse_lazy('accounts:logout')
 
 #Para enviar un email
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_HOST_USER = 'hugo.enscruz@gmail.com'
-# EMAIL_HOST_PASSWORD = 
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'neymarsitoo11@gmail.com'
+EMAIL_HOST_PASSWORD = 'teodioconelcorazon'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

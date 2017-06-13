@@ -25,7 +25,7 @@
         </ul>
     </div>
     <div id="main" class="col-lg-6 col-md-3 col-sm-6">
-        <h1 class="user_detail">{% if category %}{{ category.name }}{% else %}Productos{% endif %}</h1>
+        <h1 class="user_detail">{% if category %}{{ category.name }}{% else %}Productos{% endif %}</h1>   
         {% for product in products %}
             <div class="item col-lg-3">
                 <a href="{{ product.get_absolute_url }}">
@@ -42,3 +42,7 @@
         {% endfor %}
     </div>
 {%endblock %}
+
+{%block scripts%}
+ 
+{%endblock scripts%}
