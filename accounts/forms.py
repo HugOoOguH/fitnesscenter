@@ -54,9 +54,9 @@ class ClientForm(forms.ModelForm):
 	age = forms.IntegerField(label="Edad", widget=forms.TextInput(attrs = {'class':'form-control',
 		'type' : 'number',
 		'placeholder' : 'Edad'}))
-	start_date = forms.CharField(label="Fecha de Inicio", widget=forms.TextInput(attrs={'class':'form-control',
-		'type':'date',
-		'placeholder' : 'Fecha de Inicio'}))
+	# start_date = forms.CharField(label="Fecha de Inicio", widget=forms.TextInput(attrs={'class':'form-control',
+	# 	'type':'date',
+	# 	'placeholder' : 'Fecha de Inicio'}))
 	phone_num = forms.IntegerField(label="Número Telefónico", widget=forms.TextInput(attrs = {'class':'form-control',
 		'type' : 'text',
 		'placeholder' : 'Numero Telefonico'}))

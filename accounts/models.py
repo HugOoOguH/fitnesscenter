@@ -24,9 +24,9 @@ class Client(models.Model):
 	phone_num = models.CharField(max_length=30)
 	blood_type = models.CharField(max_length=50)
 	address = models.CharField(max_length=200)
-	observations = models.TextField()
+	observations = models.TextField(blank = True, null = True)
 	photo = models.ImageField(upload_to="clients", blank=True, null=True)
-	status = models.CharField(max_length=2, choices=STATUS_CLIENT, default='PA', blank=True, null=True)
+	status = models.CharField(max_length=2, choices=STATUS_CLIENT, default='PE', blank=True, null=True)
 	objects = models.Manager()
 	pagado = SuccessManager()
 	# pendiente = WarningManager()
@@ -36,7 +36,7 @@ class Client(models.Model):
 		verbose_name_plural = "Clients"
 
 	def __str__(self):
-		return 'Cliente {}'.format(self.user_client)
+		return 'Cliente {}'.format(self.user_client.first_name)
 
 	
 
@@ -44,6 +44,7 @@ class Administrator(models.Model):
 	user_administrator = models.OneToOneField(settings.AUTH_USER_MODEL, related_name="user_admin" )
 	BOOL_CHOICES = ((True, 'Si'), (False, 'No'))
 	photo = models.ImageField(upload_to="administrators", blank=True, null=True)
+	phone_num = models.CharField(max_length=30)
 	administrator_root =  models.BooleanField(choices = BOOL_CHOICES, default=False)
 	
 	class Meta:

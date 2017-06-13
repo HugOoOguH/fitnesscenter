@@ -1,0 +1,30 @@
+{% extends 'base_sis.html' %}
+{% load static %}
+{% include "sidebar_sis.html" %}
+
+{% block sis %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				{% if cambio %}
+					<div class="text-center">
+						<h2>El pago se realizó exitosamente.</h2>
+						<h3>Devolver ${{ result }} pesos al cliente.</h3>
+						<hr>
+						<a href="{% url 'accounts:list-client' %}" class="btn btn-primary btn-lg">
+							Lista de clientes
+						</a>
+					</div>
+				{% else %}
+					<div class="text-center">
+						<h2>El pago se realizó exitosamente.</h2>
+						<hr>
+						<a href="{% url 'accounts:list-client' %}" class="btn btn-primary btn-lg">
+							Lista de clientes
+						</a>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endblock sis %}

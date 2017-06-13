@@ -21,7 +21,7 @@
 							<p><i class="fa fa-map-marker" aria-hidden="true"> : {{client.address}}.</i></p>
 							<p><i class="fa fa-history" aria-hidden="true"> : {{client.age}} años</i></p>
 							<p><i class="fa fa-heart" aria-hidden="true">: {{client.blood_type}}</i></p>
-							<a href="{% url 'monthlypayments:page-client' client.unique_id %}" class="btn btn-info" type="button">Cobrar</a>	
+							<a href="{% url 'monthlypayments:page-client' client.unique_id 1%}" class="btn btn-info" type="button">Cobrar</a>	
                           </div>
                 </div>
 				
