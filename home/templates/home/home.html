@@ -1,0 +1,80 @@
+{%extends 'base.html' %} 
+{%load static%}
+{%block head%}
+	<link href="{%static 'css/full-slider.css'%}" rel="stylesheet">
+{%endblock head%}
+{% block content%}
+
+<!-- Full Page Image Background Carousel Header -->
+    <header id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for Slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <!-- Set the first background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('http://4.bp.blogspot.com/-Pw82pZPeOM0/UzgEa6gCEqI/AAAAAAAAG_w/YjyikuFkEN4/s1600/fitness+11.jpg');">
+                	<!--<img class="fill" src="http://planestataldedesarrollo.hidalgo.gob.mx/assets/images/slider/definitiva_2.png">-->
+
+
+                	<!--http://img0.es.gtsstatic.com/wallpapers/c9e5386e2acdcbcbbcad4ddc273e6e10_large.jpeg-->
+                	
+                </div>
+                <div class="carousel-caption">
+                    <h2 class="sletrero animated zoomInUp">¡DA LO MEJOR DE TÍ CADA DÍA!</h2>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the second background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('http://wallpapers-and-backgrounds.net/wp-content/uploads/2016/02/gym-background_1_1920x1200.jpg');">
+                	<!--<img class="img-responsive fill" src="http://www.practicavida.es/wp-content/uploads/2015/02/NO-PAIN-NO-GAIN.jpg">-->
+                </div>
+                <div class="carousel-caption">
+                    <h2 class="sletrero animated zoomInDown">¡NO DOLOR, NO SUFRIMIENTO!</h2>
+                </div>
+            </div>
+
+
+            <div class="item">
+                <!-- Set the second background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('http://wallpapern.com/wp-content/uploads/2016/05/wallpaper-workout-motivation.jpg');">
+                	<!--<img class="img-responsive fill" src="http://res.cloudinary.com/db79cecgq/image/upload/c_crop,h_720,w_1440,y_91/c_fill,h_800,w_1600/v1407952710/MejoresCancionesGimnasioNoticias01.jpg">-->
+                </div>
+                <div class="carousel-caption">
+                    <h2 class="sletrero animated zoomIn">¡NO HAY CUERPO IMPOSIBLE, SI NO MENTE INCAPAZ!</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+
+    </header>
+
+	<div  class="container" style="text-align: center">
+		<h1>Bienvenido al centro de Administración del Fitness Center</h1>
+		<a href="http://localhost:8000/admin/">
+			<button class="btn-registrar">Administrador</button>
+		</a>
+		
+	</div>
+{%endblock content%}
+
+{%block scripts%}
+	 <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+    </script>
+{%endblock scripts%}

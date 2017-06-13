@@ -1,0 +1,102 @@
+{% extends 'base_menu.html' %}
+{%load static%}
+
+{% block content %}
+<div style="padding-top: 10vh;">
+<div class="container">	
+	<div class="row">
+		<div class="text-center">
+			<div class="col-md-4 col-lg-5">
+				<div class="panel panel-primary">
+					<div class="panel-heading">	
+						<div class="panel-title">
+							<h3>Menu Conceptual</h3>
+						</div>
+					</div>
+					<div class="panel-body">
+						<div class="list-group">
+							<li class="list-group-item">
+								<div class="panel-group" id="accordion" role="tablist" aria-multiselectable = "true">
+									<!--############################################################-->
+									<div class="panel panel-default">
+										<!--Cabecera de el panel-->		
+										<div class="panel-heading" role="tab" id="headingOne">
+											<h4 class="panel-title">
+												<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+													<i class="fa fa-university" aria-hidden="true"></i> Ruta de mejora
+												</a>
+											</h4>
+										</div> <!--Fin cabecera de el panel-->
+
+										<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+											<div class="panel-body">
+												<div class="list-group">
+												<!-- Submenu Submenu Submenu Submenu Submenu Submenu Submenu Submenu Submenu Submenu -->
+												<div id="accordionDos" role="tablist" aria-multiselectable = "true">  <!--class="panel-group"--> 
+												<li  class="list-group-item">
+													<!--############################################################-->
+													<!--<div class="panel panel-default">-->
+														<!--Cabecera de el panel-->
+														
+														<div role="tab" id="submenuUno"> <!--class="panel-heading"-->
+															<p class="bg-primary	"> <!--class="panel-title"-->
+																<a role="button" data-toggle="collapse" data-parent="#accordionDos" href="#collapseOneB" aria-expanded="true" aria-controls="collapseOneB">
+																	<i class="fa fa-university" aria-hidden="true"></i> Ruta de mejora
+																</a>
+															</p>
+														</div> <!--Fin cabecera de el panel-->
+
+														<div id="collapseOneB" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="submenuUno">
+															<div class="panel-body">
+																Submenu
+															</div>
+														</div>
+													<!--</div>-->
+													<!--************************************************************-->
+												</li>	
+												</div>
+												<!-- Submenu Submenu Submenu Submenu Submenu Submenu Submenu Submenu Submenu Submenu -->
+												</div>
+											</div>
+										</div>
+									</div>
+									<!--************************************************************-->
+
+									<!--############################################################-->
+									<div class="panel panel-default">
+										<!--Cabecera de el panel-->		
+										<div class="panel-heading" role="tab" id="headingDos">
+											<h4 class="panel-title">
+												<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseDos" aria-expanded="false" aria-controls="collapseDos">
+													<i class="fa fa-university" aria-hidden="true"></i>  Ejemplo de submenu
+												</a>
+											</h4>
+										</div> <!--Fin cabecera de el panel-->
+
+										<div id="collapseDos" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingDos">
+											<div class="panel-body">
+												Lorem
+											</div>
+										</div>
+									</div>
+									<!--************************************************************-->									
+								</div>
+							</li>
+								
+							<li class="list-group-item">Filosofía</li>
+							<li class="list-group-item">omunicación</li>
+							<li class="list-group-item">Otro ejemplo</li>
+							<li class="list-group-item">Local Host</li>
+							<li class="list-group-item">Esto que es..</li>
+							<li class="list-group-item">Ultimo ejemplo</li>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8 col-lg-7">	
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+{% endblock %}

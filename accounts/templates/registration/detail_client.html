@@ -1,0 +1,56 @@
+{% extends 'base_sis.html'%}
+{% load static%}
+
+{% block sis %}
+	<div style="padding-top: 50px;">
+		{% if request.user.user_admin %}
+			<div class="text-center strong">
+				<h1 class="user_detail">Información Cliente</h1>
+			</div>
+			<div class="container col-lg-10 col-md-10">
+				<div class="row">
+					<div class="col-lg-4 col-md-3 col-sm-4 col-xs-offset">
+						<div class="text-center">
+							<h2 class="user_detail text-center">Foto Cliente</h2>
+							<img src="{{client.photo.url}}" class="img-responsive profile_img" alt="avatar">
+							<!--<input type="file" name="image" class="text-center center-block well well-sm">-->
+						</div>
+					</div>
+
+					<div class="col-lg-6 col-lg-offset-2 col-md-7 col-sm-6 col-xs-offset">
+						<h1>
+							{% if client.status == "PA" %}
+								<div class="alert alert-success text-center" role="alert">PAGADO</div>
+							{% else %}
+								{% if client.status == "PE" %}
+									<div class="alert alert-warning text-center" role="alert">PENDIENTE</div>
+								{% else %}
+									<div class="alert alert-danger text-center" role="alert">ATRASADO</div>
+								{% endif %}
+							{% endif %}
+						</h1>
+						<h3 class="user_detail text-center">Detalle sobre el cliente</h3>
+						<form action="." method="post" enctype='multipart/form-data'>
+							{%csrf_token%}
+							{{ user_form.as_p }}
+							
+							<div class="text-center">
+								<input type="submit" class="btn btn-primary btn-lg" name="enviar" value="Guardar">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		{% else %}
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 text-justify">
+						<div class="alert alert-danger" role="alert">
+							<h3>Necesitas ser administrador para poder ver esta página.</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+{% endblock sis%}

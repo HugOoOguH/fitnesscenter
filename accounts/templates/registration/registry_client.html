@@ -1,0 +1,37 @@
+{%extends 'base_sis.html'%}
+{% load crispy_forms_tags%}
+{%load static%}
+
+{% block sis%}
+	{% if request.user.user_admin %}
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<div style="padding-top: 50px;">
+					<h1>Registro de Clientes</h1>
+					<form action="." method="post" enctype='multipart/form-data'>
+						{%csrf_token%}
+						{{form_usc|crispy}}
+						{{form|crispy}}
+						<input type="submit" name="submitclient" value="Registrar Cliente">
+					</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	{% else %}
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<div class="alert alert-danger">
+						<h3>Necesitas ser Administrador para poder ver esta página</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	{% endif %}
+
+{% endblock sis%}

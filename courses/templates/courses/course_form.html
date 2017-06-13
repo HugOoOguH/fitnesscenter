@@ -1,0 +1,26 @@
+{% extends "base_sis.html" %}
+{% load crispy_forms_tags%}
+{% load static%}
+
+{%block head%}
+<link href="{% static 'css/class.css'%}" rel="stylesheet">
+<link href="{% static 'css/center.css'%}" rel="stylesheet">
+{%endblock head%}
+{% block sis %}
+<div class="container" style="padding-top: 100px;">     
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 bg-success">
+            <h2 class="text-align-center">Agregar Clases</h2>
+            <p class="text-align-center">Ingresa los datos para la clase</p>    
+            <form method="post">
+                {% csrf_token %}  
+                {{ form|crispy }}
+            <a href="{%url 'courses:list'%}">
+            <button type="button" class="btn btn-danger  glyphicon glyphicon-chevron-left">Regresar</button>
+            </a>    
+            <input type="submit" value="Registrar" class="btn btn-success"/>
+            </form>
+         </div>
+    </div>
+</div>
+{%endblock sis%}
