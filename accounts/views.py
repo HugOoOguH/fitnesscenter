@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import View
+from django.views.generic import View, ListView
 from .forms import UserRegistrationForm, UserRegistrationClientForm, AdminForm, ClientForm
 from django.contrib.auth.models import User
 from django.utils.decorators  import method_decorator
 from django.contrib.auth.decorators import login_required, user_passes_test
 from .models import Administrator, Client
 from django.contrib.admin.views.decorators import staff_member_required
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 	
 	# @staff_member_required
 	# @method_decorator(staff_member_required)
@@ -98,10 +99,24 @@ class ListClients(View):
 	@method_decorator(login_required)
 	def get(self, request, vvalue = None):
 		template_name = "registration/list-client.html"
-		if vvalue:
-			clients = Client.pagado.filter(status=vvalue)
-		else:
-			clients = Client.objects.all()
+		objects_list = Client.objects.all()
+		#stattus = None
+		#if vvalue:
+    	#		objects_list = objects_list.filter(status=stattus)
+		paginator = Paginator(objects_list,6)
+		page = request.GET.get('page')
+		try:
+			clients = paginator.page(page)
+		except PageNotAnInteger:
+			clients = paginator.page(1)
+		except EmptyPage:
+			clients = paginator.page(paginator.num_pages)
+		
+		
+		#if vvalue:
+		#	clients = Client.pagado.filter(status=vvalue)
+		#else:
+		#	clients = Client.objects.all()
 		# if vvalue == 'void':
 		# 	clients = Client.objects.all()
 
@@ -116,9 +131,17 @@ class ListClients(View):
 
 		# clients = Client.objects.all()
 		context = {
+			'page' : page,
 			'clients' : clients,
+			
 		}
 		return render(request, template_name, context)
+
+class ClientListView(ListView):
+	queryset = Client.objects.all()
+	context_object_name = 'clients'
+	paginate_by = 3
+	template_name = 'registartion/list-client.html'
 
 class DetailClient(View):
 	@method_decorator(login_required)

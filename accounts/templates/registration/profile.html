@@ -9,8 +9,7 @@
                 <div class="col-lg-10 col-md-10 col-sm-10 col-lg-offset-2 text-center" >
                     <h2 class="user_detail text-center">¡Bienvenido Administrador!</h2>
 					<div><img src="{% if adm.photo %}{{adm.photo.url}}{%else%} {%static "img/small.png"%}{%endif%}" class="profile_img"></div>
-                    <h3 class="user_detail text-center">{{request.user.first_name}}</h3>
-                    <h3 class="user_detail text-center">{{request.user.last_name}}</h3>
+                    <h3 class="user_detail text-center">{{request.user.first_name}} {{request.user.last_name}}</h3>
 					<p class="user_detail text-center"><i class="fa fa-user" aria-hidden="true"> : {{ request.user.username }}</i></p>
                     <p class="user_detail text-center"><i class="fa fa-envelope" aria-hidden="true"> : {{request.user.email}}</i></p>
 					<p class="user_detail text-center"><i class="fa fa-mobile" aria-hidden="true"> : 5551765406</i></p>

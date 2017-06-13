@@ -31,6 +31,11 @@ div.navbar-collapse.collapse.navbar-right ul li a:hover{
     font-family: 'Ubuntu', sans-serif;
 }
 
+.status_client{
+  color: #fff;
+  font-family: 'Ubuntu',monospace;
+}
+
 .profile_img{
     /*background-image: url(../img/py.png);*/
     background-size: cover;
@@ -183,6 +188,7 @@ div.navbar-collapse.collapse.navbar-right ul li a:hover{
     width: 94.5%;
   }
   .card {
-    height: 260px;
+    height: 285px;
   }
 }
+
