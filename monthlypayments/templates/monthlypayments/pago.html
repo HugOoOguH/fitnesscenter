@@ -3,12 +3,36 @@
 {% include "sidebar_sis.html" %}
 
 {% block sis %}
-	<div style="padding: 50px;">
-	<h1 class="user_detail">Pago de el cliente {{ cliente.user_client.first_name }}</h1>
-	<form action="." method="post">
-		{% csrf_token %}
-		{{ form.as_p }}
-		<input type="submit" name="" value="Cobrar">
-	</form>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				{% if access %}
+					<div class="text-center">
+						<h2>¡Atención!</h2>
+						<h3>El cliente va al corriente con sus págos, por lo cual no es necesario el cobro.</h3>
+						<div class="text-left">
+							<input type="button" class="btn btn-primary btn-lg" name="regresar" value="Regresar" onclick="history.back(-1)">
+						</div>
+					</div>
+				{% else %}
+					<div class="text-center">
+						<h3>Pago de el cliente {{ cliente.user_client.first_name }}</h3>
+						<h3>Tiene un adeudo de ${{ price }} pesos.</h3>
+						<hr>
+					</div>
+					<br><br>
+					{% if not correct %}
+						<h4>El monto recibido es incorrecto, revise nuevamente por favor.</h4>
+					{% endif %}
+					<form action="." method="post">
+						{% csrf_token %}
+						{{ form.as_p }}
+						<div class="text-right">
+							<input type="submit" name="cobrar" value="Cobrar" class="btn btn-primary btn-lg">
+						</div>
+					</form>
+				{% endif %}
+			</div>
+		</div>
 	</div>
 {% endblock sis %}

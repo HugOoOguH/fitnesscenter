@@ -8,8 +8,7 @@ class HomeView(View):
 		template_name = "home/home.html"
 		context = {}
 		return render(request, template_name, context)
-
-
+	
 
 class MenuView(View):
 	def get(self,request):
@@ -17,3 +16,6 @@ class MenuView(View):
 		context = {}
 		return render(request,template_name, context)
 
+
+def custom_404(request):
+    return  render(request,'404.html')	

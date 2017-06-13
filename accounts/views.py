@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from .models import Administrator, Client
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-	
+from monthlypayments.models import PaymentMonthly	
 	# @staff_member_required
 	# @method_decorator(staff_member_required)
 
@@ -15,8 +15,10 @@ class RegistryView(View):
 	@method_decorator(staff_member_required)
 	def get(self, request):
 		template_name = "registration/registry_admin.html";	
+		#formularios para el registo de usuarios provinenen de las clases definidas en foms.py de esta aplicacion
 		form = UserRegistrationForm()
 		form_adm = AdminForm()
+		#Diccionario con los objetos de los formularios para el template
 		context = {
 			'form' : form,
 			'form_adm' : form_adm,
@@ -71,13 +73,17 @@ class RegistryClient(View):
 			new_client = new_client_c.save(commit=False)
 			new_user = new_user_c.save(commit=False)
 			new_client.save()
+			new_payment = PaymentMonthly()
+			new_payment.client_monthly = new_client
+			new_payment.deadline_date = new_client.start_date
+			new_payment.save()
 			new_user.username = new_client.unique_id
 			new_user.email = "example@gmail.com"
 			new_user.set_password(new_client.unique_id)
 			new_user.save()
 			new_client.user_client = new_user
 			new_client.save()
-			return redirect('accounts:list-client')
+			return redirect('monthlypayments:page-client', id=new_client.unique_id, correct = 1)
 		else:
 			context = {
 				'form_usc': new_user_c,
@@ -136,6 +142,7 @@ class ListClients(View):
 			
 		}
 		return render(request, template_name, context)
+		
 
 class ClientListView(ListView):
 	queryset = Client.objects.all()
@@ -175,3 +182,18 @@ class DetailClient(View):
 # 		template_name = "registration/menu.html"
 # 		context = {}
 # 		return render(request, template_name, context)
+	
+
+		# if vvalue == 'void':
+		# 	clients = Client.objects.all()
+
+		# if vvalue == 'PA':
+		# 	clients = Client.pagado.filter(status='PA')
+
+		# if vvalue == 'PE':
+		# 	clients = Client.pendiente.filter(status='PE')
+
+		# if vvalue == 'AT':
+		# 	clients = Client.atrasado.filter(status='AT')
+
+		# clients = Client.objects.all()

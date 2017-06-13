@@ -24,3 +24,5 @@ class CourseUpdate(UpdateView):
 class CourseDelete(DeleteView):
     model = Course
     success_url = reverse_lazy('courses:list')
+
+   
