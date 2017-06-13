@@ -14,8 +14,10 @@ class RegistryView(View):
 	@method_decorator(staff_member_required)
 	def get(self, request):
 		template_name = "registration/registry_admin.html";	
+		#formularios para el registo de usuarios provinenen de las clases definidas en foms.py de esta aplicacion
 		form = UserRegistrationForm()
 		form_adm = AdminForm()
+		#Diccionario con los objetos de los formularios para el template
 		context = {
 			'form' : form,
 			'form_adm' : form_adm,
